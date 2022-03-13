@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlazorCRUDApp.Server.Models
 {
-    [Table("Person", Schema ="dbo")]
+    //[Table("Person", Schema ="dbo")]
     public class Person
     {
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    //    [Required]
+    //    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         
         [Required] 

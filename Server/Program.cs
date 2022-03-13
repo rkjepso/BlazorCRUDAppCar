@@ -21,6 +21,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddTransient<IRepository<Person>, PersonRepository>();
 builder.Services.AddTransient<IPersonService, PersonService>();
 
+PersonRepository.InitData();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
