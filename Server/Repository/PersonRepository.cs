@@ -21,7 +21,9 @@ namespace BlazorCRUDApp.Server.Repository
         {
            // _dbContext = applicationDbContext;
         }
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public async Task<Person> CreateAsync(Person _object)
+
         {
             //var obj = await _dbContext.Persons.AddAsync(_object);
             //_dbContext.SaveChanges();
@@ -64,4 +66,5 @@ namespace BlazorCRUDApp.Server.Repository
 
         }
     }
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 }

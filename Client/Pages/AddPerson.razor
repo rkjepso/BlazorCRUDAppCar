@@ -1,16 +1,16 @@
 ﻿@page "/addperson"
 @using BlazorCRUDApp.Shared
 
-@inject HttpClient Http
+@*@inject HttpClient Http*@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
+@inject IWebService WebService
 
 
 <style>
     .row {
     background-color: lightgray;
 }
-
 .col-md-6, .form-group {
     margin: 4px;
 }
@@ -60,14 +60,14 @@
     }
     protected async Task Save()
     {
-        var response = await Http.PostAsJsonAsync("api/Person", @person);
-        PersonViewModel personResponse = await response.Content.ReadFromJsonAsync<PersonViewModel>();
-        if (personResponse?.Id > 0)
-        {
-            await JsRuntime.InvokeVoidAsync("alert", "Saved Successfully!");
-            NavigationManager.NavigateTo("personlist");
-        }
+        //var response = await Http.PostAsJsonAsync("api/Person", @person);
+        //PersonViewModel personResponse = await response.Content.ReadFromJsonAsync<PersonViewModel>();
+        var personResponse = await WebService.Add(person);
+        if (!(personResponse?.Id > 0))
+            return;
 
+        await JsRuntime.InvokeVoidAsync("alert", "Saved Successfully!");
+        NavigationManager.NavigateTo("personlist");
     }
     void Cancel()
     {
