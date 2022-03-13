@@ -17,11 +17,9 @@ namespace BlazorCRUDApp.Server.Repository
         }
 
 
-        public PersonRepository(ApplicationDbContext applicationDbContext)
+        public PersonRepository(/*ApplicationDbContext applicationDbContext*/)
         {
            // _dbContext = applicationDbContext;
-
-   
         }
         public async Task<Person> CreateAsync(Person _object)
         {
@@ -51,7 +49,8 @@ namespace BlazorCRUDApp.Server.Repository
         public async Task<Person> GetByIdAsync(int Id)
         {
            // return await _dbContext.Persons.FirstOrDefaultAsync(x => x.Id == Id);
-           return fakeDB.FirstOrDefault(x => x.Id == Id);
+           var p = fakeDB.FirstOrDefault(x => x.Id == Id);
+           return p;
         }
 
         public async Task DeleteAsync(int id)
@@ -60,7 +59,8 @@ namespace BlazorCRUDApp.Server.Repository
             //_dbContext.Remove(data);
             //await _dbContext.SaveChangesAsync();
             var data = fakeDB.FirstOrDefault(x => x.Id == id);
-            fakeDB.Remove(data);
+            if (data!=null)
+                fakeDB.Remove(data);
 
         }
     }

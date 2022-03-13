@@ -16,10 +16,10 @@ namespace BlazorCRUDApp.Server.Models
         [Required] 
         public string LastName { get; set; }
         
-        [Required] 
+        //[Required] 
         public string Email { get;set; }
         
-        [Required] 
+        //[Required] 
         public string MobileNo { get; set; }
     }
 }

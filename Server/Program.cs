@@ -12,10 +12,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 // For entity Framework
-builder.Services.AddDbContext<ApplicationDbContext>(options => 
-{ 
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+//builder.Services.AddDbContext<ApplicationDbContext>(options => 
+//{ 
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+//});
 
 // For DI registration
 builder.Services.AddTransient<IRepository<Person>, PersonRepository>();

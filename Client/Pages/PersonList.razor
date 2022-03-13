@@ -3,6 +3,18 @@
 
 @inject HttpClient _httpClient
 
+<style>
+    table {
+        width:98%;
+    }
+    tr {
+        background-color:lightblue;
+    }
+    th {
+        background-color:orange;
+    }
+</style>
+
 <h1>Personal Detail</h1>
 <div>
     <a href="/addperson"> Create New Person</a>
@@ -11,19 +23,20 @@
         <table class="table-bordered">
             <thead>
                 <tr>
+                    <th width = "10%">Id</th>
                     <th width = "30%">Name</th>
-                    <th width = "20%">Email</th>
-                    <th width = "20%">Mobile No</th>
+                    <th width = "15%">Email</th>
+                    <th width = "15%">Mobile No</th>
                     <th width = "30%">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var p in personList)
                 {
+              
                     <tr>
-                        <td>
-                            @p.FirstName @p.LastName
-                        </td>
+                    <td>@p.Id</td>
+                    <td>@p.FirstName @p.LastName</td>
                     <td>@p.Email</td>
                     <td>@p.MobileNo</td>
                     <td>
@@ -37,7 +50,7 @@
     }
 </div>
 @code {
-    List<PersonViewModel> personList = new List<PersonViewModel>();
+    List<PersonViewModel> personList = new ();
     protected override async Task OnInitializedAsync()
     {
         var response = await _httpClient.GetAsync("api/person");
