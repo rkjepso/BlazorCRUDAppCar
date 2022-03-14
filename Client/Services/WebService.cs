@@ -10,6 +10,8 @@ public class WebService : IWebService
         Http = httpClient;
     }
 
+
+    // Add a new person
     public async Task<PersonViewModel> Add(PersonViewModel person)
     {
         var response = await Http.PostAsJsonAsync("api/Person", @person);
@@ -17,5 +19,6 @@ public class WebService : IWebService
         return personResponse;
 
     }
+    // Delete a person
 }
 

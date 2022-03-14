@@ -10,18 +10,25 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+bool FakeDatabase = true;
 
-// For entity Framework
-//builder.Services.AddDbContext<ApplicationDbContext>(options => 
-//{ 
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-//});
+if (!FakeDatabase)
+{
+    // For entity Framework
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    {
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    });
+    builder.Services.AddTransient<IRepository<Person>, PersonRepository>();
+}
+else
+    builder.Services.AddTransient<IRepository<Person>, PersonRepositoryFake>();
 
 // For DI registration
-builder.Services.AddTransient<IRepository<Person>, PersonRepository>();
+
 builder.Services.AddTransient<IPersonService, PersonService>();
 
-PersonRepository.InitData();
+// PersonRepository.InitData();
 
 var app = builder.Build();
 
