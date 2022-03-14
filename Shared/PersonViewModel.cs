@@ -21,10 +21,10 @@ namespace BlazorCRUDApp.Shared
 
         //[Required]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string Email { get; set; } = "";
 
         //[Required]
         [Display(Name = "Mobile Number")]
-        public string MobileNo { get; set; }
+        public string MobileNo { get; set; } = "";
     }   
 }

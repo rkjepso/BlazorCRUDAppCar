@@ -1,9 +1,10 @@
 ﻿@page "/deleteperson/{Id}"
 @using BlazorCRUDApp.Shared
 
-@inject HttpClient Http
+@*@inject HttpClient Http*@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
+@inject IWebService WebService
 
 
 <h2>Delete Person</h2>
@@ -45,17 +46,26 @@
     PersonViewModel person = new PersonViewModel();
     protected override async Task OnInitializedAsync()
     {
-        person = await Http.GetFromJsonAsync<PersonViewModel>("api/person/" + Id);
+        //person = await Http.GetFromJsonAsync<PersonViewModel>("api/person/" + Id);
+        person = await WebService.GetPersonById(Id);
     }
     protected async Task Delete()
     {
-        var response = await Http.DeleteAsync("api/Person/" + Id);
-        bool deleteResponse = await response.Content.ReadFromJsonAsync<bool>();
-        if (deleteResponse)
-        {
-            await JsRuntime.InvokeVoidAsync("alert", "Deleted Successfully!");
-            NavigationManager.NavigateTo("personlist");
-        }
+        var b = await WebService.DeleteById(Id);
+
+        if (!b)
+            return;
+
+        await JsRuntime.InvokeVoidAsync("alert", "Deleted Successfully!");
+        NavigationManager.NavigateTo("personlist");
+
+        //var response = await Http.DeleteAsync("api/Person/" + Id);
+        //bool deleteResponse = await response.Content.ReadFromJsonAsync<bool>();
+        //if (deleteResponse)
+        //{
+        //    await JsRuntime.InvokeVoidAsync("alert", "Deleted Successfully!");
+        //    NavigationManager.NavigateTo("personlist");
+        //}
 
     }
     void Cancel()
