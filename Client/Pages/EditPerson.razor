@@ -4,9 +4,12 @@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
-
+@inject IWebService WebService
+@inherits BasePage;
 
 <MyStyle></MyStyle>
+
+
 
 <h2>Edit Person</h2>
 <div class="row">
@@ -43,23 +46,27 @@
         </div>
     </div>
 </div>
+
+<div hidden=@(string.IsNullOrEmpty(StrInfo)) class="info_box">
+    @StrInfo
+</div>
+
 @code {
     [Parameter]
     public string Id{ get; set; }
     PersonViewModel person = new PersonViewModel();
     protected override async Task OnInitializedAsync()
     {
-        person = await Http.GetFromJsonAsync<PersonViewModel>("api/person/" + Id);
+        //person = await Http.GetFromJsonAsync<PersonViewModel>("api/person/" + Id);
+        person = await WebService.GetPersonById(Id);
     }
     protected async Task Save()
     {
-        var response = await Http.PutAsJsonAsync("api/Person/" + Id, @person);
-        bool personResponse = await response.Content.ReadFromJsonAsync<bool>();
-        if (personResponse)
-        {
-            await JsRuntime.InvokeVoidAsync("alert", "Updated Successfully!");
-            NavigationManager.NavigateTo("personlist");
-        }
+        //var response = await Http.PutAsJsonAsync("api/Person/" + Id, @person);
+        //bool personResponse = await response.Content.ReadFromJsonAsync<bool>();
+        bool b = await WebService.UpdatePerson(person);
+        if (b)
+            await MessageBeforeNavigate("Updated successfully", "personlist");
 
     }
     void Cancel()

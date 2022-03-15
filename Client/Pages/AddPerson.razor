@@ -5,7 +5,7 @@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
 @inject IWebService WebService
-
+@inherits BasePage
 
 <MyStyle></MyStyle>
 
@@ -45,24 +45,26 @@
         </div>
     </div>
 </div>
+
+<div hidden=@(string.IsNullOrEmpty(StrInfo)) class="info_box">
+    @StrInfo
+</div>
+
 @code {
     PersonViewModel person = new PersonViewModel();
     protected override async Task OnInitializedAsync()
     {
-        person.FirstName = $"FirstDummy";
-        person.LastName  = $"LastDummy";
+        person.FirstName = $"Dummy";
+        person.LastName  = $"Dummy";
+        await Task.Delay(1); 
     }
     protected async Task Save()
     {
-        //var response = await Http.PostAsJsonAsync("api/Person", @person);
-        //PersonViewModel personResponse = await response.Content.ReadFromJsonAsync<PersonViewModel>();
         var personResponse = await WebService.Add(person);
         if (!(personResponse?.Id > 0))
             return;
 
-        await JsRuntime.InvokeVoidAsync("alert", "Saved Successfully!");
-        await Task.Delay(3000);
-        NavigationManager.NavigateTo("personlist");
+        await MessageBeforeNavigate("Save Successfully", "personlist");
     }
     void Cancel()
     {

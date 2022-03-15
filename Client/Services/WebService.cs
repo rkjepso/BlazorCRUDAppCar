@@ -30,6 +30,15 @@ public class WebService : IWebService
         return person;
     }
 
+    public async Task<bool> UpdatePerson(PersonViewModel person)
+    {
+        var response = await Http.PutAsJsonAsync("api/Person/" + person.Id, @person);
+        bool b = await response.Content.ReadFromJsonAsync<bool>();
+        return b;
+    }
+
+
+
     // Delete a person
     public async Task<bool> DeleteById(string Id)
     {

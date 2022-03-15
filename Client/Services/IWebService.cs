@@ -6,6 +6,7 @@ namespace BlazorCRUDApp.Client.Services
     {
         Task<PersonViewModel> Add(PersonViewModel p);
         Task<PersonViewModel> GetPersonById(string id);
+        Task<bool> UpdatePerson(PersonViewModel person);
         Task<bool> DeleteById(string id);
     }
 }
