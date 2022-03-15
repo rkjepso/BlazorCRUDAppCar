@@ -55,13 +55,11 @@
     PersonViewModel person = new PersonViewModel();
     protected override async Task OnInitializedAsync()
     {
-        //person = await Http.GetFromJsonAsync<PersonViewModel>("api/person/" + Id);
         person = await WebService.GetPersonById(Id);
     }
     protected async Task Save()
     {
-        //var response = await Http.PutAsJsonAsync("api/Person/" + Id, @person);
-        //bool personResponse = await response.Content.ReadFromJsonAsync<bool>();
+
         bool b = await WebService.UpdatePerson(person);
         if (b)
             await MessageBeforeNavigate("Updated successfully", "personlist");

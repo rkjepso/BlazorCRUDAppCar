@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 bool FakeDatabase = true;
-
 if (!FakeDatabase)
 {
     // For entity Framework
