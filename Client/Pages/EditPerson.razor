@@ -47,9 +47,7 @@
     </div>
 </div>
 
-<div hidden=@(string.IsNullOrEmpty(StrInfo)) class="info_box">
-    @StrInfo
-</div>
+<Message StrInfo=@StrInfo> </Message>
 
 @code {
     [Parameter]

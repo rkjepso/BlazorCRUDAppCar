@@ -11,9 +11,8 @@
 <h2>Delete Person</h2>
 
 <MyStyle></MyStyle>
-<div hidden=@(string.IsNullOrEmpty(StrInfo)) class="info_box">
-    @StrInfo
-</div>
+
+
 
 @if(person != null)
 {
@@ -42,34 +41,23 @@
         </div>
     </div>
 </div>
+
+<Message StrInfo=@base.StrInfo></Message>
 @code {
     [Parameter]
-    public string Id{ get; set; }
+    public string Id { get; set; } = "";
 
     PersonViewModel person = new PersonViewModel();
     protected override async Task OnInitializedAsync()
     {
-        //person = await Http.GetFromJsonAsync<PersonViewModel>("api/person/" + Id);
         person = await WebService.GetPersonById(Id);
     }
     protected async Task Delete()
     {
         var b = await WebService.DeleteById(Id);
-
         if (!b)
             return;
-
-        await JsRuntime.InvokeVoidAsync("alert", "Deleted Successfully!");
-        NavigationManager.NavigateTo("personlist");
-
-        //var response = await Http.DeleteAsync("api/Person/" + Id);
-        //bool deleteResponse = await response.Content.ReadFromJsonAsync<bool>();
-        //if (deleteResponse)
-        //{
-        //    await JsRuntime.InvokeVoidAsync("alert", "Deleted Successfully!");
-        //    NavigationManager.NavigateTo("personlist");
-        //}
-
+        await MessageBeforeNavigate("Delete was successfull", "personlist");
     }
     void Cancel()
     {

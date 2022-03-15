@@ -2,10 +2,11 @@
 @using BlazorCRUDApp.Shared
 
 @inject HttpClient _httpClient
+@inject IWebService WebService
 
 <MyStyle></MyStyle>
 
-<h1>Personal Detail</h1>
+<h1>Person - complete CRUD example</h1>
 <div>
     <a href="/addperson"> Create New Person</a>
     @if (personList != null)
@@ -43,8 +44,6 @@
     List<PersonViewModel> personList = new ();
     protected override async Task OnInitializedAsync()
     {
-        var response = await _httpClient.GetAsync("api/person");
-        response.EnsureSuccessStatusCode();
-        personList = await response.Content.ReadFromJsonAsync<List<PersonViewModel>>();
+        personList = await WebService.GetAllPersons();
     }
 }

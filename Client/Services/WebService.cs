@@ -51,6 +51,20 @@ public class WebService : IWebService
         }
         return false;
     }
+
+
+    public async Task<List<PersonViewModel>> GetAllPersons()
+    {
+        var response = await Http.GetAsync("api/person");
+        response.EnsureSuccessStatusCode();
+        var personList = await response.Content.ReadFromJsonAsync<List<PersonViewModel>>();
+        return personList;
+    }
+
+
+    //var response = await _httpClient.GetAsync("api/person");
+    //response.EnsureSuccessStatusCode();
+    //personList = await response.Content.ReadFromJsonAsync<List<PersonViewModel>>();
 }
 
 #pragma warning restore CS8600, CS8603 // Converting null literal or possible null value to non-nullable type.

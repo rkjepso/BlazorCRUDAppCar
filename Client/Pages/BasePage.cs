@@ -5,16 +5,16 @@ namespace BlazorCRUDApp.Client;
 public class BasePage : ComponentBase
 {
     [Inject]
-    NavigationManager NavigationManager { get;set;}
+    private NavigationManager? NavigationManager { get;set;}
     public string StrInfo { get; set; } = "";
 
     protected async Task MessageBeforeNavigate(string message, string url)
     {
 
-        StrInfo = "Saved Successfully";
+        StrInfo = message;
         StateHasChanged();
         await Task.Delay(3000);
-        NavigationManager.NavigateTo("personlist");
+        NavigationManager?.NavigateTo("personlist");
     }
 
 }

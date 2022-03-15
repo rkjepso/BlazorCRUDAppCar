@@ -1,0 +1,9 @@
+﻿
+
+<div hidden="@(string.IsNullOrEmpty(StrInfo))" class="info_box">
+    @StrInfo
+</div>
+@code {
+    [Parameter]
+    public string StrInfo { get; set; } = "";
+}
