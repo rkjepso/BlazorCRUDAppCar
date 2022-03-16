@@ -59,11 +59,9 @@
     }
     protected async Task Save()
     {
-
         bool b = await WebService.UpdatePerson(person);
         if (b)
             await MessageBeforeNavigate("Updated successfully", "personlist");
-
     }
     void Cancel()
     {

@@ -61,10 +61,10 @@
     protected async Task Save()
     {
         var personResponse = await WebService.Add(person);
-        if (!(personResponse?.Id > 0))
-            return;
-
-        await MessageBeforeNavigate("Save Successfully", "personlist");
+        if (personResponse?.Id > 0)
+            await MessageBeforeNavigate("Save Successfully", "personlist");
+        else
+            await MessageBeforeNavigate("Save Failed !!", "personlist");
     }
     void Cancel()
     {
