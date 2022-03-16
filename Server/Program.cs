@@ -10,13 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-bool FakeDatabase = true;
+bool FakeDatabase = false;
 if (!FakeDatabase)
 {
     // For entity Framework
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
     {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDBlazor"));
     });
     builder.Services.AddTransient<IRepository<Person>, PersonRepository>();
 }

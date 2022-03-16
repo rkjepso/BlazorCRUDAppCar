@@ -15,6 +15,7 @@ public class PersonRepository : IRepository<Person>
     public PersonRepository(ApplicationDbContext applicationDbContext)
     {
          _dbContext = applicationDbContext;
+        applicationDbContext.Database.EnsureCreated();
     }
     public async Task<Person> CreateAsync(Person _object)
 
@@ -39,10 +40,7 @@ public class PersonRepository : IRepository<Person>
 
     public async Task<Person> GetByIdAsync(int Id)
     {
-
         return await _dbContext.Persons.FirstOrDefaultAsync(x => x.Id == Id);
-
-
     }
 
     public async Task DeleteAsync(int id)
