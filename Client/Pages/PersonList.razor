@@ -39,10 +39,15 @@
         </table>
     }
 </div>
+
+<Message StrInfo=@StrInfo></Message>
 @code {
+    public string StrInfo { get; set; }
     List<PersonViewModel> personList = new ();
     protected override async Task OnInitializedAsync()
     {
+        StrInfo = "Loading persons .... ";
         personList = await WebService.GetAllPersons();
+        StrInfo = $"{personList.Count} records loaded";
     }
 }

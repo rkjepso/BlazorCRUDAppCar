@@ -61,7 +61,9 @@
     {
         bool b = await WebService.UpdatePerson(person);
         if (b)
-            await MessageBeforeNavigate("Updated successfully", "personlist");
+            await base.OnOk("Updated successfully", "personlist");
+        else 
+            await base.OnError("Save Failed !!");
     }
     void Cancel()
     {

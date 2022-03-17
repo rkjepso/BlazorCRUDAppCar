@@ -46,9 +46,7 @@
     </div>
 </div>
 
-<div hidden="@(string.IsNullOrEmpty(StrInfo))" class="info_box">
-    @StrInfo
-</div>
+<Message Error=@base.Error StrInfo=@base.StrInfo></Message>
 
 @code {
     PersonViewModel person = new PersonViewModel();
@@ -62,9 +60,9 @@
     {
         var personResponse = await WebService.Add(person);
         if (personResponse?.Id > 0)
-            await MessageBeforeNavigate("Save Successfully", "personlist");
+            await OnOk("Save Successfully", "personlist");
         else
-            await MessageBeforeNavigate("Save Failed !!", "personlist");
+            await OnError("Save Failed !!");
     }
     void Cancel()
     {

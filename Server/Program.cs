@@ -16,7 +16,9 @@ if (!FakeDatabase)
     // For entity Framework
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
     {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDBlazor"));
+        //options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDBlazor"));
+        var file = "persons";
+        options.UseSqlite($"Data Source={file}.db");
     });
     builder.Services.AddTransient<IRepository<Person>, PersonRepository>();
 }

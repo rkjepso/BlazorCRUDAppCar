@@ -31,7 +31,8 @@ public class WebService : IWebService
     public async Task<List<PersonViewModel>> GetAllPersons()
     {
         var response = await Http.GetAsync("api/person");
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+            return new List<PersonViewModel>();
         var personList = await response.Content.ReadFromJsonAsync<List<PersonViewModel>>();
         return personList;
     }
@@ -39,12 +40,16 @@ public class WebService : IWebService
     public async Task<bool> UpdatePerson(PersonViewModel person)
     {
         var response = await Http.PutAsJsonAsync("api/Person/" + person.Id, @person);
+        if (!response.IsSuccessStatusCode)
+            return false;
         bool b = await response.Content.ReadFromJsonAsync<bool>();
         return b;
     }
     public async Task<bool> DeleteById(string Id)
     {
         var response = await Http.DeleteAsync("api/Person/" + Id);
+        if (!response.IsSuccessStatusCode)
+            return false;
         bool deleteResponse = await response.Content.ReadFromJsonAsync<bool>();
         return deleteResponse;
     }

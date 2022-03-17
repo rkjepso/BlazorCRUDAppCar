@@ -57,7 +57,7 @@
         var b = await WebService.DeleteById(Id);
         if (!b)
             return;
-        await MessageBeforeNavigate("Delete was successfull", "personlist");
+        await base.OnOk("Delete was successfull", "personlist");
     }
     void Cancel()
     {

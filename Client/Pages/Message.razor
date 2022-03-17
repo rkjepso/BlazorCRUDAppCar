@@ -1,9 +1,11 @@
 ﻿
 
-<div hidden="@(string.IsNullOrEmpty(StrInfo))" class="info_box">
+<div hidden="@(string.IsNullOrEmpty(StrInfo))" class=@(!Error ? "info_box" : "error_box")>
     @StrInfo
 </div>
 @code {
     [Parameter]
     public string StrInfo { get; set; } = "";
+    [Parameter]
+    public bool Error { get; set; } = false;
 }
