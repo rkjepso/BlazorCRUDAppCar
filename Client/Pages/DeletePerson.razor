@@ -37,7 +37,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <input type="button" class="btn btn-primary" @onclick="@Delete" value="Delete" />
-            <input type="button" class="btn" @onclick="@Cancel" value="Cancel" />
+            <input type="button" class="btn" @onclick="@base.Cancel" value="Back" />
         </div>
     </div>
 </div>
@@ -57,11 +57,8 @@
         var b = await WebService.DeleteById(Id);
         if (!b)
             return;
-        await base.OnOk("Delete was successfull", "personlist");
+        await base.OnOk("Delete was successfull");
     }
-    void Cancel()
-    {
-        NavigationManager.NavigateTo("personlist");
-    }
+
 
 }

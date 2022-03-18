@@ -42,7 +42,7 @@
 
 <Message StrInfo=@StrInfo></Message>
 @code {
-    public string StrInfo { get; set; }
+    public string StrInfo { get; set; } = "";
     List<PersonViewModel> personList = new ();
     protected override async Task OnInitializedAsync()
     {

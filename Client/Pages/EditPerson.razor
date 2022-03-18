@@ -42,7 +42,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <input type="button" class="btn btn-primary" @onclick="@Save" value="Save" />
-            <input type="button" class="btn" @onclick="@Cancel" value="Cancel" />
+            <input type="button" class="btn" @onclick="@base.Cancel" value="Back" />
         </div>
     </div>
 </div>
@@ -61,13 +61,12 @@
     {
         bool b = await WebService.UpdatePerson(person);
         if (b)
-            await base.OnOk("Updated successfully", "personlist");
+            await base.OnOk("Updated successfully");
         else 
             await base.OnError("Save Failed !!");
+
+  
     }
-    void Cancel()
-    {
-        NavigationManager.NavigateTo("personlist");
-    }
+
 
 }

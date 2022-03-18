@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace BlazorCRUDApp.Server.Models
 {
     [Table("Person", Schema ="dbo")]
-    public class Person
+    public record Person
     {
        [Required]
        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,10 +16,8 @@ namespace BlazorCRUDApp.Server.Models
         [Required] 
         public string? LastName { get; set; }
         
-        //[Required] 
         public string? Email { get;set; }
         
-        //[Required] 
         public string? MobileNo { get; set; }
     }
 }

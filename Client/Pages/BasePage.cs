@@ -9,12 +9,13 @@ public class BasePage : ComponentBase
     protected string StrInfo { get; set; } = "";
     protected bool Error = false;
 
-    protected async Task OnOk(string message, string url)
+    protected async Task OnOk(string message)
     {
         StrInfo = message;
         StateHasChanged();
         await Task.Delay(2500);
-        NavigationManager?.NavigateTo(url);
+
+        NavigationManager?.NavigateTo("personlist");
     }
     protected async Task OnError(string message)
     {
@@ -24,6 +25,11 @@ public class BasePage : ComponentBase
         await Task.Delay(4000);
         Error = false;
         StrInfo = "";
+    }
+
+    protected void Cancel()
+    {
+        NavigationManager?.NavigateTo("personlist");
     }
 
 }
