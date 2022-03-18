@@ -1,0 +1,52 @@
+﻿@page "/carlist"
+
+@inject HttpClient _httpClient
+@inject IWebService WebService
+
+<MyStyle></MyStyle>
+
+<h1>Cars - complete CRUD example</h1>
+<div>
+    <a href="/AddCar">Add New Car</a>
+    @if (carlist != null)
+    {
+        <table class="table-bordered">
+            <thead>
+                <tr>
+                    <th width = "10%">Id</th>
+                    <th width = "30%">Name</th>
+                    <th width = "15%">Year</th>
+                    <th width = "15%">Price</th>
+                    <th width = "30%">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in carlist)
+                {
+                    <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Brand @p.Model</td>
+                    <td>@p.Year</td>
+                    <td>@p.Price</td>
+                    <td>
+                        <a href="/editperson/@p.Id">Edit</a> |
+                        <a href="/DeleteCar/@p.Id">Delete</a>
+                    </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+<Message StrInfo=@StrInfo></Message>
+@code {
+    public string StrInfo { get; set; } = "";
+    List<CarViewModel> carlist = new ();
+    protected override async Task OnInitializedAsync()
+    {
+        StrInfo = "Loading persons .... ";
+        carlist = await WebService.GetAllCars();
+        StrInfo = $"{carlist.Count} records loaded";
+    }
+}

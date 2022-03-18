@@ -17,17 +17,17 @@ if (!FakeDatabase)
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
     {
         //options.UseSqlServer(builder.Configuration.GetConnectionString("CRUDBlazor"));
-        var file = "persons";
+        var file = "cars";
         options.UseSqlite($"Data Source={file}.db");
     });
-    builder.Services.AddTransient<IRepository<Person>, PersonRepository>();
+    builder.Services.AddTransient<IRepository<Car>, CarRepository>();
 }
 else
-    builder.Services.AddTransient<IRepository<Person>, PersonRepositoryFake>();
+    builder.Services.AddTransient<IRepository<Car>, CarRepositoryFake>();
 
 // For DI registration
 
-builder.Services.AddTransient<IPersonService, PersonService>();
+builder.Services.AddTransient<ICarService, PersonService>();
 
 // PersonRepository.InitData();
 

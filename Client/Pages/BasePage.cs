@@ -15,7 +15,7 @@ public class BasePage : ComponentBase
         StateHasChanged();
         await Task.Delay(2500);
 
-        NavigationManager?.NavigateTo("personlist");
+        NavigationManager?.NavigateTo("carlist");
     }
     protected async Task OnError(string message)
     {
@@ -29,7 +29,7 @@ public class BasePage : ComponentBase
 
     protected void Cancel()
     {
-        NavigationManager?.NavigateTo("personlist");
+        NavigationManager?.NavigateTo("carlist");
     }
 
 }

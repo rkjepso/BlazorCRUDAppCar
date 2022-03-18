@@ -11,6 +11,6 @@ namespace BlazorCRUDApp.Server.AppDbContext
         {
 
         }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<Car> Cars { get; set; }
     }
 }

@@ -3,28 +3,28 @@ using BlazorCRUDApp.Server.Repository;
 
 namespace BlazorCRUDApp.Server.Services
 {
-    public class PersonService : IPersonService
+    public class PersonService : ICarService
     {
-        private readonly IRepository<Person> _person;
-        public PersonService(IRepository<Person> person)
+        private readonly IRepository<Car> _person;
+        public PersonService(IRepository<Car> car)
         {
-            _person = person;
+            _person = car;
         }
-        public async Task<Person> AddPerson(Person person)
+        public async Task<Car> AddCar(Car car)
         {
-            return await _person.CreateAsync(person);
+            return await _person.CreateAsync(car);
         }
 
-        public async Task<bool> UpdatePerson(int id, Person person) 
+        public async Task<bool> UpdateCar(int id, Car car) 
         {
             var data = await _person.GetByIdAsync(id);
 
             if (data != null)
             {  
-                data.FirstName = person.FirstName;
-                data.LastName = person.LastName;
-                data.Email = person.Email;
-                data.MobileNo = person.MobileNo;
+                data.Brand = car.Brand;
+                data.Model = car.Model;
+                data.Year = car.Year;
+                data.Price = car.Price;
 
                 await _person.UpdateAsync(data);
                 return true;
@@ -33,18 +33,18 @@ namespace BlazorCRUDApp.Server.Services
                 return false;
         }
 
-        public async Task<bool> DeletePerson(int id)
+        public async Task<bool> DeleteCar(int id)
         {
             await _person.DeleteAsync(id);
             return true;
         }
 
-        public async Task<List<Person>> GetAllPersons()
+        public async Task<List<Car>> GetAllCars()
         {
             return await _person.GetAllAsync();
         }
 
-        public async Task<Person> GetPerson(int id)
+        public async Task<Car> GetCar(int id)
         {
             return await _person.GetByIdAsync(id);
         }

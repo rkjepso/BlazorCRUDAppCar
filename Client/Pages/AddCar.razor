@@ -1,0 +1,72 @@
+﻿@page "/AddCar"
+
+
+@*@inject HttpClient Http*@
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JsRuntime
+@inject IWebService WebService
+@inherits BasePage
+
+<MyStyle></MyStyle>
+
+
+<h2>Add Car</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="Brand"> Brand *</label>
+            <input form="Brand" class="form-control" @bind="@car.Brand" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="Model"> Model *</label>
+            <input form="Model" class="form-control" @bind="@car.Model" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="Year"> Year </label>
+            <input form="Year" class="form-control" @bind="@car.Year" />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="Price"> Price </label>
+            <input form="mobileNo" class="form-control" @bind="@car.Price" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <input type="button" class="btn btn-primary" @onclick="@Save" value="Save" />
+            <input type="button" class="btn" @onclick="@base.Cancel" value="Back" />
+        </div>
+    </div>
+</div>
+
+<Message Error=@base.Error StrInfo=@base.StrInfo></Message>
+
+@code {
+    CarViewModel car = new CarViewModel();
+    string [] f = {"Tom", "Lisa", "Peter", "Hans", "Jacob"};
+    string [] l = {"Smith", "Blackmore", "Simper", "Evans", "Reeves"};
+    Random r = new ();
+    protected override async Task OnInitializedAsync()
+    {
+        car.Brand = f[r.Next(0, f.Length)];
+        car.Model  = l[r.Next(0, l.Length)];
+        await Task.Delay(1); 
+    }
+    protected async Task Save()
+    {
+        var personResponse = await WebService.Add(car);
+        if (personResponse?.Id > 0)
+            await base.OnOk("Save Successfully");
+        else
+            await base.OnError("Save Failed !!");
+    }
+
+
+}

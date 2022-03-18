@@ -1,0 +1,64 @@
+﻿@page "/DeleteCar/{Id}"
+
+
+@*@inject HttpClient Http*@
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JsRuntime
+@inject IWebService WebService
+@inherits   BasePage
+
+
+<h2>Delete Car</h2>
+
+<MyStyle></MyStyle>
+
+
+
+@if(car != null)
+{
+<div class="row">
+   <table class="table">
+       <tr>
+           <td>Name</td>
+           <td>@car.Brand @car.Model</td>
+       </tr>
+       <tr>
+           <td>Year</td>
+           <td>@car.Year</td>
+       </tr>
+       <tr>
+           <td>Mobile Number</td>
+           <td>@car.Price</td>
+       </tr>
+   </table>
+</div>    
+}
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <input type="button" class="btn btn-primary" @onclick="@Delete" value="Delete" />
+            <input type="button" class="btn" @onclick="@base.Cancel" value="Back" />
+        </div>
+    </div>
+</div>
+
+<Message StrInfo=@base.StrInfo></Message>
+@code {
+    [Parameter]
+    public string Id { get; set; } = "";
+
+    CarViewModel car = new CarViewModel();
+    protected override async Task OnInitializedAsync()
+    {
+        car = await WebService.GetPersonById(Id);
+    }
+    protected async Task Delete()
+    {
+        var b = await WebService.DeleteById(Id);
+        if (!b)
+            return;
+        await base.OnOk("Delete was successfull");
+    }
+
+
+}

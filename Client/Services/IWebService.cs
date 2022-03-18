@@ -1,13 +1,13 @@
-﻿using BlazorCRUDApp.Shared;
+﻿
 
 namespace BlazorCRUDApp.Client.Services
 {
     public interface IWebService
     {
-        Task<PersonViewModel> Add(PersonViewModel p);
-        Task<List<PersonViewModel>> GetAllPersons();
-        Task<PersonViewModel> GetPersonById(string id);
-        Task<bool> UpdatePerson(PersonViewModel person);
+        Task<CarViewModel> Add(CarViewModel p);
+        Task<List<CarViewModel>> GetAllCars();
+        Task<CarViewModel> GetPersonById(string id);
+        Task<bool> UpdateCar(CarViewModel car);
         Task<bool> DeleteById(string id);
     }
 }

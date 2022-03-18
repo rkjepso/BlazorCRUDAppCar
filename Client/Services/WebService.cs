@@ -1,4 +1,4 @@
-﻿using BlazorCRUDApp.Shared;
+﻿
 using System.Net.Http.Json;
 
 namespace BlazorCRUDApp.Client.Services;
@@ -15,31 +15,31 @@ public class WebService : IWebService
         Http = httpClient;
     }
 
-    public async Task<PersonViewModel> Add(PersonViewModel person)
+    public async Task<CarViewModel> Add(CarViewModel car)
     {
-        var response = await Http.PostAsJsonAsync("api/Person", @person);
-        PersonViewModel personResponse = await response.Content.ReadFromJsonAsync<PersonViewModel>();
+        var response = await Http.PostAsJsonAsync("api/Car", @car);
+        CarViewModel personResponse = await response.Content.ReadFromJsonAsync<CarViewModel>();
         return personResponse;
     }
 
-    public async Task<PersonViewModel> GetPersonById(string Id)
+    public async Task<CarViewModel> GetPersonById(string Id)
     {
-        var person = await Http.GetFromJsonAsync<PersonViewModel>("api/person/" + Id);
-        return person;
+        var car = await Http.GetFromJsonAsync<CarViewModel>("api/car/" + Id);
+        return car;
     }
 
-    public async Task<List<PersonViewModel>> GetAllPersons()
+    public async Task<List<CarViewModel>> GetAllCars()
     {
-        var response = await Http.GetAsync("api/person");
+        var response = await Http.GetAsync("api/car");
         if (!response.IsSuccessStatusCode)
-            return new List<PersonViewModel>();
-        var personList = await response.Content.ReadFromJsonAsync<List<PersonViewModel>>();
-        return personList;
+            return new List<CarViewModel>();
+        var carlist = await response.Content.ReadFromJsonAsync<List<CarViewModel>>();
+        return carlist;
     }
 
-    public async Task<bool> UpdatePerson(PersonViewModel person)
+    public async Task<bool> UpdateCar(CarViewModel car)
     {
-        var response = await Http.PutAsJsonAsync("api/Person/" + person.Id, @person);
+        var response = await Http.PutAsJsonAsync("api/Car/" + car.Id, @car);
         if (!response.IsSuccessStatusCode)
             return false;
         bool b = await response.Content.ReadFromJsonAsync<bool>();
@@ -47,7 +47,7 @@ public class WebService : IWebService
     }
     public async Task<bool> DeleteById(string Id)
     {
-        var response = await Http.DeleteAsync("api/Person/" + Id);
+        var response = await Http.DeleteAsync("api/Car/" + Id);
         if (!response.IsSuccessStatusCode)
             return false;
         bool deleteResponse = await response.Content.ReadFromJsonAsync<bool>();

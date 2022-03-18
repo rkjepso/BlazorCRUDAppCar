@@ -1,0 +1,11 @@
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\bin\Debug\net6.0\BlazorCRUDApp.Shared.deps.json
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\bin\Debug\net6.0\BlazorCRUDApp.Shared.dll
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\bin\Debug\net6.0\ref\BlazorCRUDApp.Shared.dll
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\bin\Debug\net6.0\BlazorCRUDApp.Shared.pdb
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\obj\Debug\net6.0\BlazorCRUDApp.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\obj\Debug\net6.0\BlazorCRUDApp.Shared.AssemblyInfoInputs.cache
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\obj\Debug\net6.0\BlazorCRUDApp.Shared.AssemblyInfo.cs
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\obj\Debug\net6.0\BlazorCRUDApp.Shared.csproj.CoreCompileInputs.cache
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\obj\Debug\net6.0\BlazorCRUDApp.Shared.dll
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\obj\Debug\net6.0\ref\BlazorCRUDApp.Shared.dll
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Shared\obj\Debug\net6.0\BlazorCRUDApp.Shared.pdb
