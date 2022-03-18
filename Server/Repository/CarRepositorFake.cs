@@ -12,10 +12,9 @@ public class CarRepositoryFake : IRepository<Car>
 
     static public void InitData()
     {
-        fakeDB.Add(new () { Id = 1, Brand = "Richard", Model = "Kjepso", Year = "rkj@hvl.no", Price = "93272465" });
-        fakeDB.Add(new () { Id = 2, Brand = "Per", Model = "Hansen", Year = "pha@example.no", Price = "11111111" });
-        fakeDB.Add(new () { Id = 3, Brand = "Peter", Model = "Thomsen", Year = "ph@example.no", Price = "11111111" });
-        fakeDB.Add(new () { Id = 3, Brand = "Walter", Model = "Mac Party", Year = "wmcp@example.no", Price = "11111111" });
+        fakeDB.Add(new () { Id = 1, Brand = "Volvo", Model = "PV", Year = "1965", Price = "100.000" });
+        fakeDB.Add(new () { Id = 2, Brand = "Opel", Model = "GT", Year = "1969", Price = "250.000" });
+        fakeDB.Add(new () { Id = 3, Brand = "Ferrari", Model = "365GTO", Year = "1963", Price = "250.000.000" });
     }
     public CarRepositoryFake(/*ApplicationDbContext applicationDbContext*/)
     {

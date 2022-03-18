@@ -1635,3 +1635,4 @@ C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDAppCar\Cli
 C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDAppCar\Client\obj\Debug\net6.0\scopedcss\bundle\BlazorCRUDApp.Client.styles.css
 C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDAppCar\Client\obj\Debug\net6.0\scopedcss\projectbundle\BlazorCRUDApp.Client.bundle.scp.css
 C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDAppCar\Client\obj\Debug\net6.0\BlazorCRUDApp.Client.csproj.CopyComplete
+C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDAppCar\Client\obj\Debug\net6.0\BlazorCRUDApp.Client.csproj.AssemblyReference.cache
