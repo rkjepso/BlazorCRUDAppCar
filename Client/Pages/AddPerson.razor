@@ -50,19 +50,22 @@
 
 @code {
     PersonViewModel person = new PersonViewModel();
+    string [] f = {"Tom", "Lisa", "Peter", "Hans", "Jacob"};
+    string [] l = {"Smith", "Blackmore", "Simper", "Evans", "Reeves"};
+    Random r = new ();
     protected override async Task OnInitializedAsync()
     {
-        person.FirstName = $"Dummy";
-        person.LastName  = $"Dummy";
+        person.FirstName = f[r.Next(0, f.Length)];
+        person.LastName  = l[r.Next(0, l.Length)];
         await Task.Delay(1); 
     }
     protected async Task Save()
     {
         var personResponse = await WebService.Add(person);
         if (personResponse?.Id > 0)
-            await OnOk("Save Successfully", "personlist");
+            await base.OnOk("Save Successfully", "personlist");
         else
-            await OnError("Save Failed !!");
+            await base.OnError("Save Failed !!");
     }
     void Cancel()
     {

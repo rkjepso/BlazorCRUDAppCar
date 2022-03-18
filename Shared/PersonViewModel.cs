@@ -19,11 +19,9 @@ namespace BlazorCRUDApp.Shared
         [Display(Name = "Last Name")]
         public string LastName { get; set; } = "";
 
-        //[Required]
         [Display(Name = "Email")]
         public string Email { get; set; } = "";
 
-        //[Required]
         [Display(Name = "Mobile Number")]
         public string MobileNo { get; set; } = "";
     }   
