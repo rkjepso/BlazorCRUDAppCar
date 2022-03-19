@@ -1856,11 +1856,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rkjep\\Source\\Repos\\rkjepso\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj",
+      "projectUniqueName": "C:\\School\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj",
       "projectName": "BlazorCRUDApp.Client",
-      "projectPath": "C:\\Users\\rkjep\\Source\\Repos\\rkjepso\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj",
+      "projectPath": "C:\\School\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj",
       "packagesPath": "C:\\Users\\rkjep\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rkjep\\Source\\Repos\\rkjepso\\BlazorCRUDAppCar\\Client\\obj\\",
+      "outputPath": "C:\\School\\BlazorCRUDAppCar\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

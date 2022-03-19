@@ -2967,11 +2967,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rkjep\\Source\\Repos\\rkjepso\\BlazorCRUDAppCar\\Server\\BlazorCRUDApp.Server.csproj",
+      "projectUniqueName": "C:\\School\\BlazorCRUDAppCar\\Server\\BlazorCRUDApp.Server.csproj",
       "projectName": "BlazorCRUDApp.Server",
-      "projectPath": "C:\\Users\\rkjep\\Source\\Repos\\rkjepso\\BlazorCRUDAppCar\\Server\\BlazorCRUDApp.Server.csproj",
+      "projectPath": "C:\\School\\BlazorCRUDAppCar\\Server\\BlazorCRUDApp.Server.csproj",
       "packagesPath": "C:\\Users\\rkjep\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rkjep\\Source\\Repos\\rkjepso\\BlazorCRUDAppCar\\Server\\obj\\",
+      "outputPath": "C:\\School\\BlazorCRUDAppCar\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -2995,8 +2995,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\rkjep\\Source\\Repos\\rkjepso\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj": {
-              "projectPath": "C:\\Users\\rkjep\\Source\\Repos\\rkjepso\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj"
+            "C:\\School\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj": {
+              "projectPath": "C:\\School\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ugQpW19cEE4aPXU/lOa/wueH/2XbLlU2rMQFOU1vHkNqehjitTId329L/cdCH1MnyKdG/ymStRg5sFC7wLSiCQ==",
+  "dgSpecHash": "B/ZTY+Wbw4AQUvCjb0mHkGcjk9xYdz+NKlzmoCp47DeYbcvV13uL5XzcA5x3/B+z4RNJybr3DxXpCbqkNFEAeg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rkjep\\Source\\Repos\\rkjepso\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj",
+  "projectFilePath": "C:\\School\\BlazorCRUDAppCar\\Client\\BlazorCRUDApp.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rkjep\\.nuget\\packages\\blazored.localstorage\\4.2.0\\blazored.localstorage.4.2.0.nupkg.sha512",
     "C:\\Users\\rkjep\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.0\\microsoft.aspnetcore.authorization.6.0.0.nupkg.sha512",
