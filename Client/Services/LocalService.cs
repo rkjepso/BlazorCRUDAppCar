@@ -7,7 +7,7 @@ using System.Text.Json;
 public class LocalService : IWebService
 {
     ILocalStorageService LocalStorage;
-    static  List<CarViewModel>? List=new();
+    static  List<CarViewModel> List=new();
     public LocalService(ILocalStorageService localStorage)
     {
         LocalStorage = localStorage;
@@ -24,12 +24,16 @@ public class LocalService : IWebService
         return car;
     }
 
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     public async Task<CarViewModel> GetPersonById(string Id)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
     {
         //var car = await LocalStorage.GetFromJsonAsync<CarViewModel>("api/car/" + Id);
  
         var car = List.FirstOrDefault(x => x.Id.ToString() == Id);
+#pragma warning disable CS8603 // Possible null reference return.
         return car;
+#pragma warning restore CS8603 // Possible null reference return.
     }
 
     public async Task<List<CarViewModel>> GetAllCars()
@@ -69,7 +73,9 @@ public class LocalService : IWebService
         try
         {
             str = await LocalStorage.GetItemAsStringAsync("db");
+#pragma warning disable CS8601 // Possible null reference assignment.
             List = JsonSerializer.Deserialize<List<CarViewModel>>(str);
+#pragma warning restore CS8601 // Possible null reference assignment.
         }
         catch (Exception)
         {
