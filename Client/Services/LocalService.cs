@@ -2,22 +2,22 @@
 
 using Blazored.LocalStorage;
 using System.Net.Http.Json;
-
+using System.Text.Json;
 
 public class LocalService : IWebService
 {
     ILocalStorageService LocalStorage;
-    static readonly List<CarViewModel>? List=new();
+    static  List<CarViewModel>? List=new();
     public LocalService(ILocalStorageService localStorage)
     {
         LocalStorage = localStorage;
-        Load();
     }
 
     public async Task<CarViewModel> Add(CarViewModel car)
     {
         //var response = await LocalStorage.PostAsJsonAsync("api/Car", @car);
         //CarViewModel personResponse = await response.Content.ReadFromJsonAsync<CarViewModel>();
+        await Load();
         List.Add(car);
         car.Id = List.Select(p => p.Id).Max() + 1;
         await Save();
@@ -34,19 +34,13 @@ public class LocalService : IWebService
 
     public async Task<List<CarViewModel>> GetAllCars()
     {
-        //var response = await LocalStorage.GetAsync("api/car");
-        //if (!response.IsSuccessStatusCode)
-        //    return new List<CarViewModel>();
-        //var carlist = await response.Content.ReadFromJsonAsync<List<CarViewModel>>();
+        await Load();
         return List;
     }
 
     public async Task<bool> UpdateCar(CarViewModel car)
     {
-        //var response = await LocalStorage.PutAsJsonAsync("api/Car/" + car.Id, @car);
-        //if (!response.IsSuccessStatusCode)
-        //    return false;
-        //bool b = await response.Content.ReadFromJsonAsync<bool>();
+        await Load();
         int idx = List.FindIndex(p => p.Id == car.Id);
         if (idx < 0) 
             return false;
@@ -58,10 +52,8 @@ public class LocalService : IWebService
     }
     public async Task<bool> DeleteById(string Id)
     {
-        //var response = await LocalStorage.DeleteAsync("api/Car/" + Id);
-        //if (!response.IsSuccessStatusCode)
-        //    return false;
-        //bool deleteResponse = await response.Content.ReadFromJsonAsync<bool>();
+        await Load();
+
         bool deleteResponse = true;
         var car = List.FirstOrDefault(x => x.Id.ToString() == Id);
         if (car != null)
@@ -77,6 +69,7 @@ public class LocalService : IWebService
         try
         {
             str = await LocalStorage.GetItemAsStringAsync("db");
+            List = JsonSerializer.Deserialize<List<CarViewModel>>(str);
         }
         catch (Exception)
         {
@@ -84,12 +77,14 @@ public class LocalService : IWebService
             return false;
         }
         
-        return str.Length > 0;
+        return List?.Count > 0;
     }
 
     private async Task<bool> Save()
     {
-        string str = "";
+        string str = JsonSerializer.Serialize<List<CarViewModel>>(List);
+
+        
         await LocalStorage.SetItemAsStringAsync("db", str);
         return true;
     }
