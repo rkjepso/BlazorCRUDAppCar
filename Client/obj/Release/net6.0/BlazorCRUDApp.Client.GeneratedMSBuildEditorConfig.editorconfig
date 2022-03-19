@@ -11,65 +11,57 @@ build_property.EnableTrimAnalyzer = true
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = BlazorCRUDApp.Client
 build_property.RootNamespace = BlazorCRUDApp.Client
-build_property.ProjectDir = C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Client\
+build_property.ProjectDir = C:\Users\rkjep\source\repos\rkjepso\BlazorCRUDAppCar\Client\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDApp\Client
+build_property.MSBuildProjectDirectory = C:\Users\rkjep\source\repos\rkjepso\BlazorCRUDAppCar\Client
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/App.razor]
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Pages/AddPerson.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkUGVyc29uLnJhem9y
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Pages/AddCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkQ2FyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Pages/CarList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FyTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Pages/DeletePerson.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlUGVyc29uLnJhem9y
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Pages/DeleteCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlQ2FyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Pages/EditPerson.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFBlcnNvbi5yYXpvcg==
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Pages/EditCar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdENhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Pages/FetchData.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Pages/Index.razor]
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Pages/Message.razor]
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Pages/Message.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVzc2FnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Pages/MyStyle.razor]
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Pages/MyStyle.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXlTdHlsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Pages/PersonList.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyc29uTGlzdC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Shared/SurveyPrompt.razor]
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/_Imports.razor]
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Shared/MainLayout.razor]
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-mdoi2n90kv
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDApp/Client/Shared/NavMenu.razor]
+[C:/Users/rkjep/source/repos/rkjepso/BlazorCRUDAppCar/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-77zk2tcel8

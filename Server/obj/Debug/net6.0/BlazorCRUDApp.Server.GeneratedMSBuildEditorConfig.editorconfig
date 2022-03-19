@@ -8,13 +8,13 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlazorCRUDApp.Server
 build_property.RootNamespace = BlazorCRUDApp.Server
-build_property.ProjectDir = C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDAppCar\Server\
+build_property.ProjectDir = C:\Users\rkjep\Source\Repos\rkjepso\BlazorCRUDAppCar\Server\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\rkjep\OneDrive\DAT154_2022\Lecture - 25 - Blazor 2\BlazorCRUDAppCar\Server
+build_property.MSBuildProjectDirectory = C:\Users\rkjep\Source\Repos\rkjepso\BlazorCRUDAppCar\Server
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/rkjep/OneDrive/DAT154_2022/Lecture - 25 - Blazor 2/BlazorCRUDAppCar/Server/Pages/Error.cshtml]
+[C:/Users/rkjep/Source/Repos/rkjepso/BlazorCRUDAppCar/Server/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
