@@ -1,11 +1,14 @@
 ﻿@page "/carlist"
 
 @inject HttpClient _httpClient
-@inject IWebService WebService
-
+@*@inject IWebService WebService
+@inject IServiceLocal WebServiceLocal*@
+@inherits   BasePage
 <MyStyle></MyStyle>
 
 <h1>Cars - complete CRUD example</h1>
+<p>@(ProgramExt.IsLocalDb ? "Local Storage" : "Server DB")</p>
+<button @onclick="OnChangeDb">@(ProgramExt.IsLocalDb ? "Local Storage" : "Server DB")</button>
 <div>
     <a href="/AddCar">Add New Car</a>
     @if (carlist != null)
@@ -41,14 +44,28 @@
     }
 </div>
 
-<Message StrInfo=@StrInfo></Message>
+<Message StrInfo=@StrLoad></Message>
 @code {
-    public string StrInfo { get; set; } = "";
+    public string StrLoad { get; set; } = "";
     List<CarViewModel> carlist = new ();
+
     protected override async Task OnInitializedAsync()
     {
-        StrInfo = "Loading persons .... ";
-        carlist = await WebService.GetAllCars();
-        StrInfo = $"{carlist.Count} records loaded";
+       await  OnLoad();
+    }
+
+    protected async Task OnLoad()
+    {
+       
+
+        StrLoad = "Loading persons .... ";
+        carlist = await API.GetAllCars();
+        StrLoad = $"{carlist.Count} records loaded";
+    }
+
+    async Task OnChangeDb()
+    {
+        ProgramExt.IsLocalDb = !ProgramExt.IsLocalDb;
+        await OnLoad();
     }
 }

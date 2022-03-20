@@ -4,7 +4,7 @@
 @*@inject HttpClient Http*@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
-@inject IWebService WebService
+
 @inherits   BasePage
 
 
@@ -54,11 +54,11 @@
     CarViewModel car = new CarViewModel();
     protected override async Task OnInitializedAsync()
     {
-        car = await WebService.GetPersonById(Id);
+        car = await API.GetPersonById(Id);
     }
     protected async Task Delete()
     {
-        var b = await WebService.DeleteById(Id);
+        var b = await API.DeleteById(Id);
         if (!b)
             return;
         await base.OnOk("Delete was successfull");

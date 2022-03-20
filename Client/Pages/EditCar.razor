@@ -4,7 +4,7 @@
 @inject HttpClient Http
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
-@inject IWebService WebService
+
 @inherits BasePage;
 
 <MyStyle></MyStyle>
@@ -55,11 +55,11 @@
     CarViewModel car = new CarViewModel();
     protected override async Task OnInitializedAsync()
     {
-        car = await WebService.GetPersonById(Id);
+        car = await API.GetPersonById(Id);
     }
     protected async Task Save()
     {
-        bool b = await WebService.UpdateCar(car);
+        bool b = await API.UpdateCar(car);
         if (b)
             await base.OnOk("Updated successfully");
         else 

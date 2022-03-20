@@ -10,4 +10,9 @@ namespace BlazorCRUDApp.Client.Services
         Task<bool> UpdateCar(CarViewModel car);
         Task<bool> DeleteById(string id);
     }
+
+    public interface IServiceLocal : IWebService
+    {
+    }
+
 }

@@ -4,7 +4,7 @@
 @*@inject HttpClient Http*@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
-@inject IWebService WebService
+
 @inherits BasePage
 
 <MyStyle></MyStyle>
@@ -65,7 +65,7 @@
     }
     protected async Task Save()
     {
-        var personResponse = await WebService.Add(car);
+        var personResponse = await API.Add(car);
         if (personResponse?.Id > 0)
             await base.OnOk("Save Successfully");
         else

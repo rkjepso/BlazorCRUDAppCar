@@ -4,7 +4,7 @@ using Blazored.LocalStorage;
 using System.Net.Http.Json;
 using System.Text.Json;
 
-public class LocalService : IWebService
+public class LocalService : IServiceLocal
 {
     ILocalStorageService LocalStorage;
     static  List<CarViewModel> List=new();
