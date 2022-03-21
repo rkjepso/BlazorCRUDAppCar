@@ -8,7 +8,7 @@
 
 <h1>Cars - complete CRUD example</h1>
 <p>@(ProgramExt.IsLocalDb ? "Local Storage" : "Server DB")</p>
-<button @onclick="OnChangeDb">@(ProgramExt.IsLocalDb ? "Local Storage" : "Server DB")</button>
+<button @onclick="OnChangeDb">Switch to @(ProgramExt.IsLocalDb ? "Server" : "Local")</button>
 <div>
     <a href="/AddCar">Add New Car</a>
     @if (carlist != null)
@@ -34,8 +34,12 @@
                     <td>@p.Year</td>
                     <td>@p.Price</td>
                     <td>
-                        <a href="/editperson/@p.Id">Edit</a> |
-                        <a href="/DeleteCar/@p.Id">Delete</a>
+                        @if(MayEdit(p))
+                        {
+                            <a href="/editperson/@p.Id">Edit</a> 
+                            <a href="/DeleteCar/@p.Id">Delete</a>
+                        }
+          
                     </td>
                     </tr>
                 }
@@ -49,6 +53,13 @@
     public string StrLoad { get; set; } = "";
     List<CarViewModel> carlist = new ();
 
+    private bool MayEdit(CarViewModel car)
+    {
+        if (!ProgramExt.IsLocalDb)
+            return true;
+        return car.Id >= IWebService.ID_LOCAL;
+    }
+
     protected override async Task OnInitializedAsync()
     {
        await  OnLoad();
@@ -56,16 +67,16 @@
 
     protected async Task OnLoad()
     {
-       
-
         StrLoad = "Loading persons .... ";
-        carlist = await API.GetAllCars();
+        carlist = await base.API.GetAllCars();
+
         StrLoad = $"{carlist.Count} records loaded";
     }
 
     async Task OnChangeDb()
-    {
+    {      
         ProgramExt.IsLocalDb = !ProgramExt.IsLocalDb;
+        await base.API.Sync(carlist);
         await OnLoad();
     }
 }

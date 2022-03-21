@@ -53,6 +53,17 @@ public class WebService : IWebService
         bool deleteResponse = await response.Content.ReadFromJsonAsync<bool>();
         return deleteResponse;
     }
+
+    // Update database with new cars
+    public async Task<List<CarViewModel>> Sync(List<CarViewModel> listLocal)
+    {
+        var listAdd = listLocal.Where(car=>car.Id >= IWebService.ID_LOCAL).ToList();
+        listAdd.ForEach(car => car.Id=0);
+        foreach(var car in listAdd)
+             await Add(car);
+
+        return await GetAllCars();
+    }
 }
 
 #pragma warning restore CS8600, CS8603 // Converting null literal or possible null value to non-nullable type.

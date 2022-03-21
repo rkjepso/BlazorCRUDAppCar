@@ -4,6 +4,8 @@ using Blazored.LocalStorage;
 using System.Net.Http.Json;
 using System.Text.Json;
 
+#pragma warning disable CS8603, CS8601, CS1998 // Possible null reference return.
+
 public class LocalService : IServiceLocal
 {
     ILocalStorageService LocalStorage;
@@ -15,25 +17,20 @@ public class LocalService : IServiceLocal
 
     public async Task<CarViewModel> Add(CarViewModel car)
     {
-        //var response = await LocalStorage.PostAsJsonAsync("api/Car", @car);
-        //CarViewModel personResponse = await response.Content.ReadFromJsonAsync<CarViewModel>();
         await Load();
         List.Add(car);
-        car.Id = List.Select(p => p.Id).Max() + 1;
+        car.Id = Math.Max(IWebService.ID_LOCAL, List.Select(p => p.Id).Max() + 1); // Trick to avoid
         await Save();
         return car;
     }
 
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+
     public async Task<CarViewModel> GetPersonById(string Id)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
     {
-        //var car = await LocalStorage.GetFromJsonAsync<CarViewModel>("api/car/" + Id);
- 
         var car = List.FirstOrDefault(x => x.Id.ToString() == Id);
-#pragma warning disable CS8603 // Possible null reference return.
+
         return car;
-#pragma warning restore CS8603 // Possible null reference return.
+
     }
 
     public async Task<List<CarViewModel>> GetAllCars()
@@ -75,24 +72,28 @@ public class LocalService : IServiceLocal
             str = await LocalStorage.GetItemAsStringAsync("db");
 #pragma warning disable CS8601 // Possible null reference assignment.
             List = JsonSerializer.Deserialize<List<CarViewModel>>(str);
-#pragma warning restore CS8601 // Possible null reference assignment.
+
         }
         catch (Exception)
         {
-
             return false;
         }
-        
         return List?.Count > 0;
     }
 
     private async Task<bool> Save()
     {
         string str = JsonSerializer.Serialize<List<CarViewModel>>(List);
-
-        
         await LocalStorage.SetItemAsStringAsync("db", str);
         return true;
+    }
+
+    public async Task<List<CarViewModel>> Sync(List<CarViewModel> listServer)
+    {
+        List.Clear();
+        List = listServer;
+        await Save();
+        return List;
     }
 }
 
