@@ -38,7 +38,7 @@
                     <td>@p.Brand</td>
                     <td> @p.Model</td>
                     <td>@p.Year</td>
-                    <td>@p.Price</td>
+                    <td style=@StyleNumber>@ToNumber(@p.Price)</td>
                     <td>
                         @if(MayEdit(p))
                         {
@@ -59,6 +59,8 @@
 @code {
     public string StrLoad { get; set; } = "";
     List<CarViewModel> carlist = new ();
+    private static string ToNumber(string n) => string.Format("{0,10:#,##}", int.Parse(n));
+    private string StyleNumber => "text-align:right";
 
     private bool MayEdit(CarViewModel car)
     {
