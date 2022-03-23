@@ -1,7 +1,5 @@
 ﻿@page "/DeleteCar/{Id}"
 
-
-@*@inject HttpClient Http*@
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JsRuntime
 
@@ -11,8 +9,6 @@
 <h2>Delete Car</h2>
 
 <MyStyle></MyStyle>
-
-
 
 @if(car != null)
 {
@@ -46,7 +42,7 @@
     </div>
 </div>
 
-<Message StrInfo=@base.StrInfo></Message>
+<Message  Error=@base.Error StrInfo=@base.StrInfo></Message>
 @code {
     [Parameter]
     public string Id { get; set; } = "";
@@ -58,10 +54,10 @@
     }
     protected async Task Delete()
     {
-        var b = await API.DeleteById(Id);
-        if (!b)
-            return;
-        await base.OnOk("Delete was successfull");
+        if (await API.DeleteById(Id))
+            await base.OnOk("Delete was successfull");
+        else
+            await base.OnError("Delete failed - allready deleted ?");
     }
 
 

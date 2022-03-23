@@ -5,11 +5,17 @@
 @inject IServiceLocal WebServiceLocal*@
 @inherits   BasePage
 <MyStyle></MyStyle>
+<style>p, button {display:inline;}</style>
 
-<h1>Cars - complete CRUD example</h1>
-<p>@(ProgramExt.IsLocalDb ? "Local Storage" : "Server DB")</p>
-<button @onclick="OnChangeDb">Switch to @(ProgramExt.IsLocalDb ? "Server" : "Local")</button>
-<div>
+
+<div style="background-color:lightcyan;">
+    <h3>Cars - complete CRUD example</h3>
+    <p>@(ProgramExt.IsLocalDb ? "Local Storage" : "Server DB")</p>
+    <button @onclick="OnChangeDb">Switch to @(ProgramExt.IsLocalDb ? "Server" : "Local")</button>
+</div>
+<br />
+
+<div style="background:ligh">
     <a href="/AddCar">Add New Car</a>
     @if (carlist != null)
     {
@@ -46,9 +52,10 @@
             </tbody>
         </table>
     }
+<Message StrInfo=@StrLoad></Message>
 </div>
 
-<Message StrInfo=@StrLoad></Message>
+
 @code {
     public string StrLoad { get; set; } = "";
     List<CarViewModel> carlist = new ();
@@ -69,7 +76,6 @@
     {
         StrLoad = "Loading persons .... ";
         carlist = await base.API.GetAllCars();
-
         StrLoad = $"{carlist.Count} records loaded";
     }
 

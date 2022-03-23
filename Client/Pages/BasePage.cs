@@ -27,7 +27,7 @@ public class BasePage : ComponentBase
         StateHasChanged();
         await Task.Delay(2500);
 
-        NavigationManager?.NavigateTo("carlist");
+        //NavigationManager?.NavigateTo("carlist");
     }
     protected async Task OnError(string message)
     {

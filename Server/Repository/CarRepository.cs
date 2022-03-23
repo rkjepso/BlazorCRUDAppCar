@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 namespace BlazorCRUDApp.Server.Repository;
 
 #pragma warning disable CS8603 // Possible null reference return.
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
 
 // Real Database
 public class CarRepository : IRepository<Car>
@@ -23,7 +22,6 @@ public class CarRepository : IRepository<Car>
         var obj = await _dbContext.Cars.AddAsync(_object);
         _ = _dbContext.SaveChanges();
         return obj.Entity;
-
     }
 
     public async Task UpdateAsync(Car _object)
@@ -35,7 +33,6 @@ public class CarRepository : IRepository<Car>
     public async Task<List<Car>> GetAllAsync()
     {
         return await _dbContext.Cars.ToListAsync();
-  
     }
 
     public async Task<Car> GetByIdAsync(int Id)
@@ -53,5 +50,4 @@ public class CarRepository : IRepository<Car>
     }
 }
 #pragma warning restore CS8603 // Possible null reference return.
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 

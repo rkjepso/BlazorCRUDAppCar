@@ -83,7 +83,7 @@ public class LocalService : IServiceLocal
 
     private async Task<bool> Save()
     {
-        string str = JsonSerializer.Serialize<List<CarViewModel>>(List);
+        string str = JsonSerializer.Serialize(List);
         await LocalStorage.SetItemAsStringAsync("db", str);
         return true;
     }
