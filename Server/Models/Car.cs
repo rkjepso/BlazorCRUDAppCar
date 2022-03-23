@@ -16,9 +16,8 @@ namespace BlazorCRUDApp.Server.Models
         [Required] 
         public string? Model { get; set; }
 
+        public int? Year { get;set; }
         
-        public string? Year { get;set; }
-        
-        public string? Price { get; set; }
+        public int? Price { get; set; }
     }
 }

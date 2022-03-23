@@ -59,7 +59,7 @@
 @code {
     public string StrLoad { get; set; } = "";
     List<CarViewModel> carlist = new ();
-    private static string ToNumber(string n) => string.Format("{0,10:#,##}", int.Parse(n));
+    private static string ToNumber(int n) => string.Format("{0,10:#,##}", n);
     private string StyleNumber => "text-align:right";
 
     private bool MayEdit(CarViewModel car)
