@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Img\Ferrari512.jpg" />
+    <None Include="wwwroot\Img\JaguarEType.jpg" />
+    <None Include="wwwroot\Img\Porche911.jpg" />
+    <None Include="wwwroot\Img\VolvoAmazon.jpg" />
+    <None Include="wwwroot\Img\VolvoPV.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-rc.2.21480.10" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-rc.2.21480.10" PrivateAssets="all" />

@@ -33,14 +33,14 @@
    </table>
 </div>    
 }
+
+<img class="imgcar" src=@CarViewModel.GetImg(car)/>
+
 <div class="row">
-    <div class="col-md-4">
-        <div class="form-group">
-            <input type="button" class="btn btn-primary" @onclick="@Delete" value="Delete" />
-            <input type="button" class="btn" @onclick="@base.Cancel" value="Back" />
-        </div>
-    </div>
+    <input type="button" class="button" @onclick="@Delete" value="Delete" />
+    <input type="button" class="button" @onclick="@base.Cancel" value="Back" />
 </div>
+
 
 <Message  Error=@base.Error StrInfo=@base.StrInfo></Message>
 @code {

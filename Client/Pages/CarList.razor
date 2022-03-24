@@ -5,13 +5,16 @@
 @inject IServiceLocal WebServiceLocal*@
 @inherits   BasePage
 <MyStyle></MyStyle>
-<style>p, button {display:inline;}</style>
+<style>p, button {display:inline;}
+img {height:70px;width:100%;}
+</style>
 
 
 <div style="background-color:lightcyan;">
-    <h3>Cars - complete CRUD example</h3>
+    <h3>Vintage Cars - CRUD example</h3>
     <p>@(ProgramExt.IsLocalDb ? "Local Storage" : "Server DB")</p>
     <button @onclick="OnChangeDb">Switch to @(ProgramExt.IsLocalDb ? "Server" : "Local")</button>
+
 </div>
 <br />
 
@@ -23,11 +26,12 @@
             <thead>
                 <tr>
                     <th width = "10%">Id</th>
-                    <th width = "15%">Brand</th>
-                    <th width = "15%">Model</th>
-                    <th width = "15%">Year</th>
+                    <th width = "15%">Photo</th>
+                    <th width = "10%">Brand</th>
+                    <th width = "10%">Model</th>
+                    <th width = "10%">Year</th>
                     <th width = "15%">Price</th>
-                    <th width = "30%">Action</th>
+                    <th width = "25%">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,6 +39,9 @@
                 {
                     <tr>
                     <td>@p.Id</td>
+                    <td>
+                        <img src=@(GetImage(p))/> 
+                    </td>
                     <td>@p.Brand</td>
                     <td> @p.Model</td>
                     <td>@p.Year</td>
@@ -44,8 +51,7 @@
                         {
                             <a href="/editperson/@p.Id">Edit</a> 
                             <a href="/DeleteCar/@p.Id">Delete</a>
-                        }
-          
+                        }      
                     </td>
                     </tr>
                 }
@@ -61,6 +67,12 @@
     List<CarViewModel> carlist = new ();
     private static string ToNumber(int n) => string.Format("{0,10:#,##}", n);
     private string StyleNumber => "text-align:right";
+
+    private string GetImage(CarViewModel car)
+    {
+        string img = CarViewModel.GetImg(car);
+        return img;
+    }
 
     private bool MayEdit(CarViewModel car)
     {

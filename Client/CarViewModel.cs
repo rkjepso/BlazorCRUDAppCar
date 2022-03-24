@@ -44,5 +44,20 @@ public record CarViewModel
 
         return car;
     }
+
+    public static string GetImg(CarViewModel? car)
+    {
+        if (car== null)
+            return "";
+        return (car.Brand, car.Model) switch
+        {
+            ("Volvo", "Amazn") => "Img/VolvoAmazon.jpg",
+            ("Volvo", "PV") => "Img/VolvoPV.jpg",
+            ("Ferrari", "512") => "Img/Ferrari512.jpg",
+            ("Porche", "911") => "Img/Porche911.jpg",
+            ("Jaguar", "EType") => "Img/JaguarEType.jpg",
+            _ => "Img/VolvoPV.jpg"
+        };
+    }
 }   
 

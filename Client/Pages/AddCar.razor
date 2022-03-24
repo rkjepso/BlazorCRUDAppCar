@@ -9,16 +9,7 @@
 
 <MyStyle></MyStyle>
 <style>
-    .label, .form-control, .button {
-        display:inline;
-        margin : 5px 0px 5px 5px;
-        width : 200px;
-    }
-    .row {
-        border:1px dotted black;
-        margin: 5px 0px;
-        width:max(500px);
-    }
+
 
 </style>
 
@@ -38,6 +29,8 @@
     <input form="Price" class="button"@bind="@car.Price" />
 
 </div>
+
+<img class="imgcar" src=@CarViewModel.GetImg(car)/>
 <div class="row">
     <button class="button" @onclick="@Save">Save</button>
     <button class="button" @onclick="@base.Cancel">Back</button>
@@ -45,6 +38,8 @@
 
 
 <Message Error=@base.Error StrInfo=@base.StrInfo></Message>
+
+
 
 @code {
     CarViewModel car = CarViewModel.CreateRandomCar(); 
