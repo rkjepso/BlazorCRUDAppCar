@@ -24,8 +24,15 @@ public class WebService : IWebService
 
     public async Task<CarViewModel> GetPersonById(string Id)
     {
-        var car = await Http.GetFromJsonAsync<CarViewModel>("api/car/" + Id);
-        return car;
+        try
+        {
+            var car = await Http.GetFromJsonAsync<CarViewModel>("api/car/" + Id);
+            return car;
+        }
+        catch (Exception ex)
+        {  
+        }
+        return null;
     }
 
     public async Task<List<CarViewModel>> GetAllCars()

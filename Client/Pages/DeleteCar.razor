@@ -37,8 +37,8 @@
 <img class="imgcar" src=@CarViewModel.GetImg(car)/>
 
 <div class="row">
-    <input type="button" class="button" @onclick="@Delete" value="Delete" />
-    <input type="button" class="button" @onclick="@base.Cancel" value="Back" />
+    <input type="button" class="button" @onclick="@Delete" value=@DeleteText />
+    <input type="button" class="button" @onclick="@base.OnBack" value="Back" />
 </div>
 
 
@@ -52,6 +52,7 @@
     {
         car = await API.GetPersonById(Id);
     }
+    public string DeleteText { get; set; } = "Delete";
     protected async Task Delete()
     {
         if (await API.DeleteById(Id))
@@ -59,6 +60,7 @@
         else
             await base.OnError("Delete failed - allready deleted ?");
     }
+
 
 
 }

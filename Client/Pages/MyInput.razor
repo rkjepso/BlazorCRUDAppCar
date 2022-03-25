@@ -1,0 +1,10 @@
+﻿@typeparam _var
+
+
+
+@code {
+    [Parameter]
+    public string Label { get; set; } = "";
+    [Parameter]
+    public RenderFragment<_var> ChildContent { get; set; }
+}

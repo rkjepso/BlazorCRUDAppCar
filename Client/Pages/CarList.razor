@@ -5,20 +5,21 @@
 @inject IServiceLocal WebServiceLocal*@
 @inherits   BasePage
 <MyStyle></MyStyle>
-<style>p, button {display:inline;}
-img {height:70px;width:100%;}
+<style>
+    h3, p, button {display:inline;}
+    .imgSmall {height:70px;width:100%;}
 </style>
 
 
-<div style="background-color:lightcyan;">
-    <h3>Vintage Cars - CRUD example</h3>
-    <p>@(ProgramExt.IsLocalDb ? "Local Storage" : "Server DB")</p>
+<div >
+    <h3>Cars CRUD Ex. </h3>
+    <p>@(ProgramExt.IsLocalDb ? "(Local Storage)" : "(Server DB)")</p>
     <button @onclick="OnChangeDb">Switch to @(ProgramExt.IsLocalDb ? "Server" : "Local")</button>
-
 </div>
-<br />
 
-<div style="background:ligh">
+
+
+<div>
     <a href="/AddCar">Add New Car</a>
     @if (carlist != null)
     {
@@ -40,7 +41,7 @@ img {height:70px;width:100%;}
                     <tr>
                     <td>@p.Id</td>
                     <td>
-                        <img src=@(GetImage(p))/> 
+                        <img class="imgSmall" src=@(GetImage(p))/> 
                     </td>
                     <td>@p.Brand</td>
                     <td> @p.Model</td>
@@ -61,6 +62,11 @@ img {height:70px;width:100%;}
 <Message StrInfo=@StrLoad></Message>
 </div>
 
+@*<button @onclick="OnDummy">@StrDummy</button>
+@code {
+    public string StrDummy { get; set; } = "Press Me";
+    void OnDummy() { StrDummy = StrDummy + 'X'; }
+}*@
 
 @code {
     public string StrLoad { get; set; } = "";
@@ -83,13 +89,15 @@ img {height:70px;width:100%;}
 
     protected override async Task OnInitializedAsync()
     {
-       await  OnLoad();
+        await  OnLoad();
     }
 
     protected async Task OnLoad()
     {
         StrLoad = "Loading persons .... ";
+        //   await Task.Delay(3_000);
         carlist = await base.API.GetAllCars();
+     
         StrLoad = $"{carlist.Count} records loaded";
     }
 

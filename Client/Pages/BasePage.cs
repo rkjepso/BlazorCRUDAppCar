@@ -39,7 +39,7 @@ public class BasePage : ComponentBase
         StrInfo = "";
     }
 
-    protected void Cancel()
+    protected void OnBack()
     {
         NavigationManager?.NavigateTo("carlist");
     }
