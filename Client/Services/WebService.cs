@@ -29,7 +29,7 @@ public class WebService : IWebService
             var car = await Http.GetFromJsonAsync<CarViewModel>("api/car/" + Id);
             return car;
         }
-        catch (Exception ex)
+        catch (Exception )
         {  
         }
         return null;

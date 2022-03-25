@@ -1,8 +1,4 @@
 ﻿@page "/DeleteCar/{Id}"
-
-@inject NavigationManager NavigationManager
-@inject IJSRuntime JsRuntime
-
 @inherits   BasePage
 
 
@@ -13,24 +9,10 @@
 @if(car != null)
 {
 <div class="row">
-   <table class="table">
-       <tr>
-           <td>Name</td>
-           <td>@car.Brand @car.Model</td>
-       </tr>
-       <tr>
-           <td>Year</td>
-           <td>@car.Year</td>
-       </tr>
-       <tr>
-           <td>Model</td>
-           <td>@car.Model</td>
-       </tr>
-       <tr>
-           <td>Price</td>
-           <td>@car.Price</td>
-       </tr>
-   </table>
+    <label class="ml">Brand *</label> <p class="mi">@car.Brand</p>
+    <label class="ml">Model *</label> <p class="mi">@car.Model</p>
+    <label class="ml">Year</label>    <p class="mi">@car.Year</p> 
+    <label class="ml">Price</label>   <p class="mi">@car.Price</p> 
 </div>    
 }
 
@@ -60,7 +42,4 @@
         else
             await base.OnError("Delete failed - allready deleted ?");
     }
-
-
-
 }

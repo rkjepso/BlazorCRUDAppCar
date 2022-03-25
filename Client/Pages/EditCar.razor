@@ -1,35 +1,25 @@
 ﻿@page "/editperson/{Id}"
-
-
-@inject HttpClient Http
-@inject NavigationManager NavigationManager
-@inject IJSRuntime JsRuntime
-
 @inherits BasePage;
 
 <MyStyle></MyStyle>
 
+<style>
 
+
+</style>
 
 <h2>Edit Car</h2>
-<div class="row" >
+@if(car != null)
+{
+    <div class="row" >
+        <label class="ml">Brand* </label> <input class="mi" @bind=@car.Brand />
+        <label class="ml">Model *</label> <input class="mi" @bind=@car.Model />
+        <label class="ml">Year</label>    <input class="mi" @bind=@car.Year />
+        <label class="ml">Price</label>   <input class="mi" @bind=@car.Price />
+    </div>
+    <img class="imgcar" src=@CarViewModel.GetImg(car)/>
+}
 
-
-    <label for="Brand" class="button"> Brand *</label>
-    <input form="Brand" class="button" @bind="@car.Brand" />
-
-    <label for="Model" class="button"> Model *</label>
-    <input form="Model" class="button" @bind="@car.Model" />
-
-    <label for="Model" class="button">  Year</label>
-    <input form="Model" class="button"@bind="@car.Year" />
-
-    <label for="Price" class="button">  Price</label>
-    <input form="Price" class="button"@bind="@car.Price" />
-
-</div>
-
-<img class="imgcar" src=@CarViewModel.GetImg(car)/>
 <div class="row">
     <button class="button" @onclick="@Save">Save</button>
     <button class="button" @onclick="@base.OnBack">Back</button>
@@ -52,9 +42,5 @@
             await base.OnOk("Updated successfully");
         else 
             await base.OnError("Save Failed !!");
-
-  
     }
-
-
 }

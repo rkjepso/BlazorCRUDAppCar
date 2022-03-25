@@ -1,10 +1,14 @@
-﻿@typeparam _var
+﻿@typeparam T
 
 
+    <label  class="button">@Label</label>
+    <input  class="button" @bind=@Data />
 
 @code {
     [Parameter]
     public string Label { get; set; } = "";
     [Parameter]
-    public RenderFragment<_var> ChildContent { get; set; }
+    public T Data { get; set; }
+    [Parameter]
+    public RenderFragment<T> ChildContent { get; set; }
 }
