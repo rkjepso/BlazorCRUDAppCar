@@ -19,15 +19,16 @@
 <img class="imgcar" src=@CarViewModel.GetImg(car)/>
 
 <div class="row">
-    <input type="button" class="button" @onclick="@Delete" value=@DeleteText />
-    <input type="button" class="button" @onclick="@base.OnBack" value="Back" />
+     <button class="ml" @onclick="@Delete">Delete</button>
+    <button class="ml" @onclick="@base.OnCarList">Car List</button>
 </div>
 
-
-<Message  Error=@base.Error StrInfo=@base.StrInfo></Message>
+<Message @ref="Msg"></Message>
 @code {
     [Parameter]
     public string Id { get; set; } = "";
+
+    public Message Msg;
 
     CarViewModel car = new CarViewModel();
     protected override async Task OnInitializedAsync()
@@ -37,9 +38,7 @@
     public string DeleteText { get; set; } = "Delete";
     protected async Task Delete()
     {
-        if (await API.DeleteById(Id))
-            await base.OnOk("Delete was successfull");
-        else
-            await base.OnError("Delete failed - allready deleted ?");
+        var b= await API.DeleteById(Id);
+        await Msg?.Show(b,  b ? "Delete OK" : "Delete Error - (allready deleted ?)");
     }
 }

@@ -21,29 +21,33 @@
 
 <img class="imgcar" src=@CarViewModel.GetImg(car)/>
 <div class="row">
-    <button class="button" @onclick="@Save">Save</button>
-    <button class="button" @onclick="@base.OnBack">Back</button>
+    <button class="ml" @onclick="@Save">Save</button>
+    <button class="ml" @onclick="@base.OnCarList">Car List</button>
 </div>
 
 
-<Message Error=@base.Error StrInfo=@base.StrInfo></Message>
+<Message @ref="Msg" Act=StateHasChanged></Message>
 
 
 
 @code {
-    CarViewModel car = CarViewModel.CreateRandomCar(); 
-  
+    CarViewModel car = CarViewModel.CreateRandomCar();
+
+    public Message Msg;
+    bool Saved = false;
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(1); 
+        await Task.Delay(1);
     }
-    protected async Task Save()
+    protected async Task<bool> Save()
     {
         var personResponse = await API.Add(car);
-        if (personResponse?.Id > 0)
-            await base.OnOk("Save Successfully");
-        else
-            await base.OnError("Save Failed !!");
+        bool b = (personResponse?.Id > 0);
+        await Msg.Show(b,  b ? "Add OK" : "Add Error");
+
+        if (b)
+             car = CarViewModel.CreateRandomCar();
+        return b;
     }
 
 

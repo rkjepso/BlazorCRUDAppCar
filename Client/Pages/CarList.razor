@@ -7,8 +7,8 @@
 <MyStyle></MyStyle>
 <style>
     h3, p, button {display:inline;}
-    .imgSmall {height:70px;width:100%}
-    .table-bordered {width:min(100%, 900px)}
+    .imgSmall {height:70px;width:min(140px,100%)}
+    .table-bordered {width:min(100%, 1024px)}
 </style>
 
 
@@ -18,7 +18,7 @@
     <button @onclick="OnChangeDb">Switch to @(ProgramExt.IsLocalDb ? "Server" : "Local")</button>
 </div>
 
-
+<br />
 
 <div>
     <a href="/AddCar">Add New Car</a>

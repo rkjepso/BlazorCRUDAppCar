@@ -1,11 +1,23 @@
-﻿
+﻿<MyStyle></MyStyle>
 
-<div hidden="@(string.IsNullOrEmpty(StrInfo))" class=@(!Error ? "info_box" : "error_box")>
+<div hidden="@(string.IsNullOrEmpty(StrInfo))" class=@(Error ? "error_box" : "info_box")>
     @StrInfo
 </div>
 @code {
     [Parameter]
     public string StrInfo { get; set; } = "";
     [Parameter]
-    public bool Error { get; set; } = false;
+    public Action? Act { get; set; } = null;
+
+    private bool Error;
+
+    public async Task Show(bool ok, string msg)
+    {
+        StrInfo = msg;
+        Error = !ok;
+        StateHasChanged();
+        await Task.Delay(4500);
+        StrInfo = "";
+        StateHasChanged();
+    }
 }

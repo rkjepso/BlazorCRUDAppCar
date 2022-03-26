@@ -9,7 +9,7 @@
 @code{
     protected override async Task OnInitializedAsync()
     {
-         NavigationManager?.NavigateTo("carlist");
+         await Task.Run(()=>NavigationManager?.NavigateTo("carlist"));
     }
 }
 

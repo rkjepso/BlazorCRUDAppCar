@@ -21,16 +21,17 @@
 }
 
 <div class="row">
-    <button class="button" @onclick="@Save">Save</button>
-    <button class="button" @onclick="@base.OnBack">Back</button>
+    <button class="ml" @onclick="@Save">Save</button>
+    <button class="ml" @onclick="@base.OnCarList">Car List</button>
 </div>
-
-<Message Error=@base.Error StrInfo=@StrInfo> </Message>
+<Message @ref="Msg" Act=StateHasChanged></Message>
 
 @code {
     [Parameter]
     public string Id { get; set; } = "";
+     public Message Msg;
     CarViewModel car = new CarViewModel();
+
     protected override async Task OnInitializedAsync()
     {
         car = await API.GetPersonById(Id);
@@ -38,9 +39,8 @@
     protected async Task Save()
     {
         bool b = await API.UpdateCar(car);
-        if (b)
-            await base.OnOk("Updated successfully");
-        else 
-            await base.OnError("Save Failed !!");
+        await Msg.Show(b,  b ? "Edit OK" : "Edit Error");
+
+        StateHasChanged();
     }
 }
