@@ -8,7 +8,7 @@
 
 </style>
 
-<h2>Edit Car</h2>
+<h3>Edit Car</h3>
 @if(car != null)
 {
     <div class="row" >
@@ -21,15 +21,15 @@
 }
 
 <div class="row">
-    <button class="ml" @onclick="@Save">Save</button>
-    <button class="ml" @onclick="@base.OnCarList">Car List</button>
+    <button class="btn btn-primary" @onclick="@Save">Save</button>
+    <button class="btn btn-primary" @onclick="@base.OnCarList">Car List</button>
 </div>
 <Message @ref="Msg" Act=StateHasChanged></Message>
 
 @code {
     [Parameter]
     public string Id { get; set; } = "";
-     public Message Msg;
+    public Message? Msg;
     CarViewModel car = new CarViewModel();
 
     protected override async Task OnInitializedAsync()
@@ -39,7 +39,9 @@
     protected async Task Save()
     {
         bool b = await API.UpdateCar(car);
-        await Msg.Show(b,  b ? "Edit OK" : "Edit Error");
+
+        if (Msg != null)
+            await Msg.Show(b,  b ? "Edit OK" : "Edit Error");
 
         StateHasChanged();
     }

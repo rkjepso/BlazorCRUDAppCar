@@ -9,7 +9,7 @@
     [Parameter]
     public Action? Act { get; set; } = null;
 
-    private bool Error;
+    private bool Error=false;
 
     public async Task Show(bool ok, string msg)
     {

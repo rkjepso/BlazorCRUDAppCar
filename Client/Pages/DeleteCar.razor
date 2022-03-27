@@ -2,7 +2,7 @@
 @inherits   BasePage
 
 
-<h2>Delete Car</h2>
+<h3>Delete Car</h3>
 
 <MyStyle></MyStyle>
 
@@ -19,8 +19,8 @@
 <img class="imgcar" src=@CarViewModel.GetImg(car)/>
 
 <div class="row">
-     <button class="ml" @onclick="@Delete">Delete</button>
-    <button class="ml" @onclick="@base.OnCarList">Car List</button>
+     <button class="btn btn-primary" @onclick="@Delete">Delete</button>
+    <button class="btn btn-primary" @onclick="@base.OnCarList">Car List</button>
 </div>
 
 <Message @ref="Msg"></Message>
@@ -28,7 +28,7 @@
     [Parameter]
     public string Id { get; set; } = "";
 
-    public Message Msg;
+    public Message? Msg;
 
     CarViewModel car = new CarViewModel();
     protected override async Task OnInitializedAsync()
@@ -39,6 +39,7 @@
     protected async Task Delete()
     {
         var b= await API.DeleteById(Id);
-        await Msg?.Show(b,  b ? "Delete OK" : "Delete Error - (allready deleted ?)");
+        if (Msg !=null)
+            await Msg.Show(b,  b ? "Delete OK" : "Delete Error - (already deleted ?)");
     }
 }

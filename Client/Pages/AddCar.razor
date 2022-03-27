@@ -4,12 +4,8 @@
 @inherits BasePage
 
 <MyStyle></MyStyle>
-<style>
 
-
-</style>
-
-<h2>Add Car</h2>
+<h3>Add Car</h3>
 <div class="row" style="background-color:lightcyan;">
 
     <label class="ml">Brand* </label> <input class="mi" @bind=@car.Brand />
@@ -21,20 +17,18 @@
 
 <img class="imgcar" src=@CarViewModel.GetImg(car)/>
 <div class="row">
-    <button class="ml" @onclick="@Save">Save</button>
-    <button class="ml" @onclick="@base.OnCarList">Car List</button>
+    <button class="btn btn-primary"  @onclick="@Save">Save</button>
+    <button class="btn btn-primary"  @onclick="@base.OnCarList">Car List</button>
 </div>
 
 
 <Message @ref="Msg" Act=StateHasChanged></Message>
 
-
-
 @code {
     CarViewModel car = CarViewModel.CreateRandomCar();
 
-    public Message Msg;
-    bool Saved = false;
+    public Message? Msg;
+
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(1);
@@ -43,8 +37,9 @@
     {
         var personResponse = await API.Add(car);
         bool b = (personResponse?.Id > 0);
-        await Msg.Show(b,  b ? "Add OK" : "Add Error");
-
+        if (Msg != null)
+            await Msg.Show(b,  b ? "Add OK" : "Add Error");
+   
         if (b)
              car = CarViewModel.CreateRandomCar();
         return b;
