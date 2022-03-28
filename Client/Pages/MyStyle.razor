@@ -7,23 +7,31 @@
     }
     .btn {
          display:inline;
-         width:49%;
+         width:min(250px, 48%);
          margin: 2px;
+         font-size:inherit;
     }
     .info_box, .error_box {
-        background-color:lightblue;
+        background-color:RGB(150,255,200);
         margin:10px 0px 10px 0px;
         padding:10px;
     }
     .error_box {
-        background-color:red;
-        color:yellow;
+        background-color:RGB(255,150,150);
     }
 
     .imgcar {
         width:200px;
         height:150px;
     }
+    
+    .imgSmall {height:70px;width:min(140px,100%)}
+
+    .divImg {
+        padding:20px;
+        text-align:center;
+    }
+
     tr {
         background-color:lightcyan;
     }
@@ -31,16 +39,21 @@
         background-color:lightgray;
     }
 
+    .table-bordered {width:min(100%, 1024px)}
+    .table-bordered tr:nth-child(even) {
+        background-color:lightgray;    
+    }
+
     .row {
         border:1px dotted black;
         margin: 5px 0px;
-        width:max(500px);
+        width:max(512px);
         background-color:lightcyan;
     }
 
     .ml, .mi {
         float: left;
-        width: 45%;
+        width: 48%;
         background-color:lightcyan;
         padding: 3px;
         margin: 3px;

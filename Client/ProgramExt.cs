@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 namespace BlazorCRUDApp.Client;
 static class ProgramExt
 {
-    static public bool IsLocalDb = false;
+    static public bool IsLocalDb = true;
 }
 
 //static public IServiceCollection? Services;

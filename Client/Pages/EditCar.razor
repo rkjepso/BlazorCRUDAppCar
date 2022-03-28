@@ -16,8 +16,12 @@
         <label class="ml">Model *</label> <input class="mi" @bind=@car.Model />
         <label class="ml">Year</label>    <input class="mi" @bind=@car.Year />
         <label class="ml">Price</label>   <input class="mi" @bind=@car.Price />
+
+        <div class="divImg">
+            <img class="imgcar" src=@CarViewModel.GetImg(car)/>
+        </div>
     </div>
-    <img class="imgcar" src=@CarViewModel.GetImg(car)/>
+
 }
 
 <div class="row">
@@ -42,7 +46,5 @@
 
         if (Msg != null)
             await Msg.Show(b,  b ? "Edit OK" : "Edit Error");
-
-        StateHasChanged();
     }
 }
