@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-bool FakeDatabase = false;
+bool FakeDatabase = true;
 if (FakeDatabase)
     builder.Services.AddTransient<IRepository<Car>, CarRepositoryFake>();
 else
