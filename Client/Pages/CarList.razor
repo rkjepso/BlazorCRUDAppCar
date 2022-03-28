@@ -13,7 +13,9 @@
 
 <div >
     <h3>@(ProgramExt.IsLocalDb ? "Local Storage" : "Server Database")</h3>
-    <button class="btn btn-primary" @onclick="OnChangeDb">Switch DB</button>
+    <button class="btn btn-primary" @onclick="OnDeleteAll">Delete All</button>
+@*    <button class="btn btn-primary" @onclick="OnChangeDb">Switch DB</button>*@
+
 </div>
 
 <br />
@@ -93,8 +95,17 @@
     async Task OnChangeDb()
     {      
         ProgramExt.IsLocalDb = !ProgramExt.IsLocalDb;
-        await base.API.Sync(carlist);
-        await OnLoad();
+        //await base.API.Sync(carlist);
+        //await OnLoad();
+    }
+
+    async Task OnDeleteAll()
+    {
+        foreach (var car in carlist)
+            await API.DeleteById(car.Id.ToString());
+
+        carlist = await base.API.GetAllCars();   
+        StateHasChanged();
     }
 }
 

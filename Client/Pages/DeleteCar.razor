@@ -44,7 +44,5 @@
         var b= await API.DeleteById(Id);
         if (Msg !=null)
             await Msg.Show(b,  b ? "Delete OK" : "Delete Error - (already deleted ?)");
-        if (b)
-            base.OnCarList();
     }
 }

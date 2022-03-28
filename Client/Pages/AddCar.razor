@@ -43,8 +43,7 @@
         bool b = (personResponse?.Id > 0);
         if (Msg != null)
             await Msg.Show(b,  b ? "Add OK" : "Add Error");
-        if (b)
-            base.OnCarList();
+
         return b;
     }
 
