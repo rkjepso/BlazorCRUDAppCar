@@ -13,13 +13,11 @@ public class CarRepositoryFake : IRepository<Car>
     static public void InitData()
     {
         fakeDB.Add(new () { Id = 1, Brand = "Volvo", Model = "PV", Year = 1965, Price = 100000 });
-        fakeDB.Add(new () { Id = 2, Brand = "Opel", Model = "GT", Year = 1969, Price = 250000 });
-        fakeDB.Add(new () { Id = 3, Brand = "Ferrari", Model = "365GTO", Year = 1963, Price = 50000000});
+        fakeDB.Add(new () { Id = 2, Brand = "Volvo", Model = "Amazon", Year = 1969, Price = 250000 });
+        fakeDB.Add(new () { Id = 3, Brand = "Ferrari", Model = "512", Year = 1963, Price = 50000000});
     }
     public CarRepositoryFake(/*ApplicationDbContext applicationDbContext*/)
     {
-        if (fakeDB.Count == 0)
-            InitData();
     }
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     public async Task<Car> CreateAsync(Car _object)

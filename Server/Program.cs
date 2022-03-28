@@ -10,9 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-bool FakeDatabase = true;
+bool FakeDatabase = false;
 if (FakeDatabase)
+{ 
     builder.Services.AddTransient<IRepository<Car>, CarRepositoryFake>();
+    CarRepositoryFake.InitData();
+}
 else
 {
     // For entity Framework

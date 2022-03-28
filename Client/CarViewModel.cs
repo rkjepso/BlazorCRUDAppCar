@@ -13,17 +13,15 @@ public record CarViewModel
     public int Id { get; set; }
 
     [Required]
-    [Display(Name = "Brand")]
     public string Brand { get; set; } = "";
 
-    [Required]
-    [Display(Name = "Model")]
+    [Required] 
     public string Model { get; set; } = "";
 
-    [Display(Name = "Year")]
+
     public int Year { get; set; } = 1970;
 
-    [Display(Name = "Mobile Number")]
+
     public int  Price { get; set; } = 0;
 
 
