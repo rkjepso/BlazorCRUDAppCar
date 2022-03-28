@@ -13,10 +13,13 @@
     <label class="ml">Model *</label> <p class="mi">@car.Model</p>
     <label class="ml">Year</label>    <p class="mi">@car.Year</p> 
     <label class="ml">Price</label>   <p class="mi">@car.Price</p> 
+    <div class="divImg">
+        <img class="imgcar" src=@CarViewModel.GetImg(car)/>
+    </div>
 </div>    
 }
 
-<img class="imgcar" src=@CarViewModel.GetImg(car)/>
+
 
 <div class="row">
      <button class="btn btn-primary" @onclick="@Delete">Delete</button>
@@ -41,5 +44,7 @@
         var b= await API.DeleteById(Id);
         if (Msg !=null)
             await Msg.Show(b,  b ? "Delete OK" : "Delete Error - (already deleted ?)");
+        if (b)
+            base.OnCarList();
     }
 }

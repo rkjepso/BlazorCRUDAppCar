@@ -1,67 +1,60 @@
 ﻿@page "/carlist"
-
-@inject HttpClient _httpClient
-@*@inject IWebService WebService
-@inject IServiceLocal WebServiceLocal*@
 @inherits   BasePage
 <MyStyle></MyStyle>
 <style>
-    h3, p, .btn {display:inline;}
-    .imgSmall {height:70px;width:min(140px,100%)}
-    .table-bordered {width:min(100%, 1024px)}
-    .table-bordered tr:nth-child(even) {
-        background-color:lightgray;    
+    h3 {display:inline;width:100px;color:red;}
+
+    .btn {
+        position:absolute;
+        right:10px;
     }
 </style>
 
 
 <div >
     <h3>@(ProgramExt.IsLocalDb ? "Local Storage" : "Server Database")</h3>
-    <button class="btn btn-primary" @onclick="OnChangeDb">Switch to @(ProgramExt.IsLocalDb ? "Server" : "Local")</button>
+    <button class="btn btn-primary" @onclick="OnChangeDb">Switch DB</button>
 </div>
 
 <br />
-
+<a href="/AddCar">Add New Car</a>
 <div>
-
-    @if (carlist != null)
-    {
-        <table class="table-bordered">
-            <thead>
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th width = "10%">Id</th>
+                <th width = "15%">Photo</th>
+                <th width = "10%">Brand</th>
+                <th width = "10%">Model</th>
+                <th width = "10%">Year</th>
+                <th width = "15%">Price</th>
+                <th width = "25%">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in carlist ??= new List<CarViewModel>())
+            {
                 <tr>
-                    <th width = "10%">Id</th>
-                    <th width = "15%">Photo</th>
-                    <th width = "10%">Brand</th>
-                    <th width = "10%">Model</th>
-                    <th width = "10%">Year</th>
-                    <th width = "15%">Price</th>
-                    <th width = "25%">Action</th>
+                <td>@p.Id</td>
+                <td>
+                    <img class="imgSmall" src=@(GetImage(p))/> 
+                </td>
+                <td>@p.Brand</td>
+                <td> @p.Model</td>
+                <td>@p.Year</td>
+                <td style=@StyleNumber>@ToNumber(@p.Price)</td>
+                <td>
+                    @if(MayEdit(p))
+                    {
+                        <a href="/editperson/@p.Id">Edit</a> 
+                        <a href="/DeleteCar/@p.Id">Delete</a>
+                    }      
+                </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var p in carlist)
-                {
-                    <tr>
-                    <td>@p.Id</td>
-                    <td>
-                        <img class="imgSmall" src=@(GetImage(p))/> 
-                    </td>
-                    <td>@p.Brand</td>
-                    <td> @p.Model</td>
-                    <td>@p.Year</td>
-                    <td style=@StyleNumber>@ToNumber(@p.Price)</td>
-                    <td>
-                        @if(MayEdit(p))
-                        {
-                            <a href="/editperson/@p.Id">Edit</a> 
-                            <a href="/DeleteCar/@p.Id">Delete</a>
-                        }      
-                    </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
+            }
+        </tbody>
+    </table>
+
 <Message StrInfo=@StrLoad></Message>
 </div>
 
@@ -93,9 +86,7 @@
     protected async Task OnLoad()
     {
         StrLoad = "Loading persons .... ";
-        //   await Task.Delay(3_000);
-        carlist = await base.API.GetAllCars();
-     
+        carlist = await base.API.GetAllCars();   
         StrLoad = $"{carlist.Count} records loaded";
     }
 
@@ -113,4 +104,4 @@
     public string StrDummy { get; set; } = "Press Me";
     void OnDummy() { StrDummy = StrDummy + 'X'; }
 }*@
-@*    <a href="/AddCar">Add New Car</a>*@
+
