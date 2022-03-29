@@ -1,6 +1,7 @@
 ﻿
 using System.Net.Http.Json;
 
+
 namespace BlazorCRUDApp.Client.Services;
 
 #pragma warning disable CS8600, CS8603 // Converting null literal or possible null value to non-nullable type.
@@ -37,11 +38,25 @@ public class WebService : IWebService
 
     public async Task<List<CarViewModel>> GetAllCars()
     {
-        var response = await Http.GetAsync("api/car");
-        if (!response.IsSuccessStatusCode)
-            return new List<CarViewModel>();
-        var carlist = await response.Content.ReadFromJsonAsync<List<CarViewModel>>();
-        return carlist;
+        CarViewModel error = new CarViewModel();
+        var list = new List<CarViewModel>();
+        try
+        {
+            var carlist = await Http.GetFromJsonAsync<List<CarViewModel>>("api/Car/GetAll");
+            return carlist;
+        }
+        catch (Exception e)
+        {
+            error.Brand = e.Message;
+            error.Model = e.HResult.ToString();
+        }
+        list.Add(error);
+        return list;
+        //var response = await Http.GetAsync("api/car");
+        //if (!response.IsSuccessStatusCode)
+        //    return new List<CarViewModel>();
+        //var carlist = await response.Content.ReadFromJsonAsync<List<CarViewModel>>();
+        //return carlist;
     }
 
     public async Task<bool> UpdateCar(CarViewModel car)

@@ -29,11 +29,7 @@ else
 
 
 // For DI registration
-
-builder.Services.AddTransient<ICarService, PersonService>();
-
-// PersonRepository.InitData();
-
+builder.Services.AddTransient<ICarService, CarService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

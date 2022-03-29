@@ -15,7 +15,7 @@ namespace BlazorCRUDApp.Server.Controllers
             _carService = personService;
         }
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<List<Car>> GetAll()
         {
             return await _carService.GetAllCars();

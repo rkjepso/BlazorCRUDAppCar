@@ -3,21 +3,21 @@ using BlazorCRUDApp.Server.Repository;
 
 namespace BlazorCRUDApp.Server.Services
 {
-    public class PersonService : ICarService
+    public class CarService : ICarService
     {
-        private readonly IRepository<Car> _person;
-        public PersonService(IRepository<Car> car)
+        private readonly IRepository<Car> _car;
+        public CarService(IRepository<Car> car)
         {
-            _person = car;
+            _car = car;
         }
         public async Task<Car> AddCar(Car car)
         {
-            return await _person.CreateAsync(car);
+            return await _car.CreateAsync(car);
         }
 
         public async Task<bool> UpdateCar(int id, Car car) 
         {
-            var data = await _person.GetByIdAsync(id);
+            var data = await _car.GetByIdAsync(id);
 
             if (data != null)
             {  
@@ -26,7 +26,7 @@ namespace BlazorCRUDApp.Server.Services
                 data.Year = car.Year;
                 data.Price = car.Price;
 
-                await _person.UpdateAsync(data);
+                await _car.UpdateAsync(data);
                 return true;
             }
             else
@@ -35,18 +35,18 @@ namespace BlazorCRUDApp.Server.Services
 
         public async Task<bool> DeleteCar(int id)
         {
-            await _person.DeleteAsync(id);
+            await _car.DeleteAsync(id);
             return true;
         }
 
         public async Task<List<Car>> GetAllCars()
         {
-            return await _person.GetAllAsync();
+            return await _car.GetAllAsync();
         }
 
         public async Task<Car> GetCar(int id)
         {
-            return await _person.GetByIdAsync(id);
+            return await _car.GetByIdAsync(id);
         }
     }
 }
