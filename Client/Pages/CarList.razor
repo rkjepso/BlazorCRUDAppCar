@@ -87,7 +87,7 @@
 
     protected async Task OnLoad()
     {
-        StrLoad = "Loading persons .... ";
+        StrLoad = "Loading car .... ";
         carlist = await base.API.GetAllCars();   
         StrLoad = $"{carlist.Count} records loaded";
     }

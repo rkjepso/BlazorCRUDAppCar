@@ -16,7 +16,10 @@ public class LocalService : IServiceLocal
     }
 
     public async Task<CarViewModel> Add(CarViewModel car)
-    {
+    { 
+        if (string.IsNullOrWhiteSpace(car.Brand) || string.IsNullOrWhiteSpace(car.Brand))
+            return null;  // Stupid way of testing !!!!!  
+
         await Load();
         List.Add(car);
         car.Id = Math.Max(IWebService.ID_LOCAL, List.Select(p => p.Id).Max() + 1); // Trick to avoid
@@ -41,6 +44,8 @@ public class LocalService : IServiceLocal
 
     public async Task<bool> UpdateCar(CarViewModel car)
     {
+        if (string.IsNullOrWhiteSpace(car.Brand) || string.IsNullOrWhiteSpace(car.Brand))
+            return false;  // Stupid way of testing !!!!!  
         await Load();
         int idx = List.FindIndex(p => p.Id == car.Id);
         if (idx < 0) 

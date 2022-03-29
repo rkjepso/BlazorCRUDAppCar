@@ -57,7 +57,7 @@ public record CarViewModel
             ("Ferrari", "512") => "Img/Ferrari512.jpg",
             ("Porche", "911") => "Img/Porche911.jpg",
             ("Jaguar", "EType") => "Img/JaguarEType.jpg",
-            _ => "Img/voidcar.jpg"
+            _ => "Img/dummy.jpg"
         };
     }
 }   
