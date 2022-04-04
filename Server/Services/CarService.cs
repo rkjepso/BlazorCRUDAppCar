@@ -19,18 +19,11 @@ namespace BlazorCRUDApp.Server.Services
         {
             var data = await _car.GetByIdAsync(id);
 
-            if (data != null)
-            {  
-                data.Brand = car.Brand;
-                data.Model = car.Model;
-                data.Year = car.Year;
-                data.Price = car.Price;
-
-                await _car.UpdateAsync(data);
-                return true;
-            }
-            else
-                return false;
+            if (data == null)
+                return false;  
+            data = car;
+            await _car.UpdateAsync(data);
+            return true;
         }
 
         public async Task<bool> DeleteCar(int id)
