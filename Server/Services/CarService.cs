@@ -17,12 +17,12 @@ namespace BlazorCRUDApp.Server.Services
 
         public async Task<bool> UpdateCar(int id, Car car) 
         {
-            var data = await _car.GetByIdAsync(id);
+            //var data = await _car.GetByIdAsync(id);
 
-            if (data == null)
-                return false;  
-            data = car;
-            await _car.UpdateAsync(data);
+            //if (data == null)
+            //    return false;  
+            //data = car;
+            await _car.UpdateAsync(car);
             return true;
         }
 

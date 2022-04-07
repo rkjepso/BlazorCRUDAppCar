@@ -2,20 +2,16 @@
 @inherits   BasePage
 
 @inject ICarsViewModel ICarsViewModel;
-
+<h3>MVVM Demo</h3>
 <MyStyle></MyStyle>
 <style>
     h3 {display:inline;width:100px;color:red;}
-
     .btn {
         position:absolute;
         right:10px;
     }
 </style>
 
-<div >
-    <button class="btn btn-primary" @onclick="OnDeleteAll">Delete All</button>
-</div>
 
 <br />
 <a href="/AddCar">Add New Car</a>
@@ -61,7 +57,6 @@
 
 @code {
     public string StrLoad { get; set; } = "";
-    List<CarViewModel> carlist = new ();
     private static string ToNumber(int n) => string.Format("{0,10:#,##}", n);
     private string StyleNumber => "text-align:right";
 
@@ -84,17 +79,17 @@
     protected async Task OnLoad()
     {
         StrLoad = "Loading car .... ";
-        await ICarsViewModel.GetAll();  
-        StrLoad = $"{carlist.Count} records loaded";
+        await ICarsViewModel.RefreshVM();  
+        StrLoad = $"{ICarsViewModel.Lst.Count} records loaded";
     }
 
 
     async Task OnDeleteAll()
     {
-        foreach (var car in carlist)
+        foreach (var car in ICarsViewModel.Lst)
             await ICarsViewModel.DeleteById(car.Id.ToString());
 
-        await ICarsViewModel.GetAll();   
+        await ICarsViewModel.RefreshVM();
         StateHasChanged();
     }
 }

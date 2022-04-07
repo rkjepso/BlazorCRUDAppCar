@@ -11,7 +11,7 @@ namespace BlazorCRUDApp.Client
     public interface ICarsViewModel
     {
         public List<CarViewModel> Lst { get; set; }
-        public Task GetAll();
+        public Task RefreshVM();
         public Task<CarViewModel> Add(CarViewModel p);
         public Task<CarViewModel> GetById(string Id);
         public Task<bool> Update(CarViewModel car);
