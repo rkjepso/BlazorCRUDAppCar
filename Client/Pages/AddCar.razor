@@ -2,6 +2,7 @@
 
 
 @inherits BasePage
+@inject ICarsViewModel ICarsViewModel
 
 <MyStyle></MyStyle>
 
@@ -35,7 +36,7 @@
     }
     protected async Task<bool> Save()
     {
-        var personResponse = await API.Add(car);
+        var personResponse = await ICarsViewModel.Add(car);
         bool b = (personResponse?.Id > 0);
         if (Msg != null)
             await Msg.Show(b,  b ? "Add OK" : "Add Error");

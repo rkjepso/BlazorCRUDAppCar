@@ -1,12 +1,10 @@
 ﻿@page "/EditCar/{Id}"
 @inherits BasePage;
+@inject ICarsViewModel ICarsViewModel;
+@inject IWebService IWebService
 
 <MyStyle></MyStyle>
 
-<style>
-
-
-</style>
 
 <h3>Edit Car</h3>
 @if(car != null)
@@ -38,11 +36,11 @@
 
     protected override async Task OnInitializedAsync()
     {
-        car = await API.GetPersonById(Id);
+         car = await ICarsViewModel.GetById(Id);
     }
     protected async Task Save()
     {
-        bool b = await API.UpdateCar(car);
+        bool b = await ICarsViewModel.Update(car);
 
         if (Msg != null)
             await Msg.Show(b,  b ? "Edit OK" : "Edit Error");

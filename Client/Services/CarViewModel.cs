@@ -5,24 +5,50 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlazorCRUDApp.Shared;
+
 
 namespace BlazorCRUDApp.Client;
 
-public record CarViewModel
+public record Car : ICar
 {
     public int Id { get; set; }
+    public string Brand { get; set; } = string.Empty;
+    public string Model { get; set; } = string.Empty;
+    public int Year { get; set; }
+    public int Price { get; set; }
+}
 
-    [Required]
-    public string Brand { get; set; } = "";
-
-    [Required] 
-    public string Model { get; set; } = "";
-
-
+public record CarViewModel : ICar
+{
+    public int Id { get; set; }
+    public string Brand { get; set; } = string.Empty;
+    public string Model { get; set; } = string.Empty;
     public int Year { get; set; } = 1970;
-
-
     public int  Price { get; set; } = 0;
+
+    public static implicit operator CarViewModel(Car obj)
+    {
+        return new CarViewModel
+        {
+            Id = obj.Id,
+            Brand = obj.Brand,
+            Model = obj.Model,
+            Year = obj.Year,
+            Price = obj.Price,    
+        };
+    }
+    public static implicit operator Car(CarViewModel obj)
+    {
+        return new Car
+        {
+            Id = obj.Id,
+            Brand = obj.Brand,
+            Model = obj.Model,
+            Year = obj.Year,
+            Price = obj.Price,
+        };
+    }
 
 
     public static CarViewModel CreateRandomCar()

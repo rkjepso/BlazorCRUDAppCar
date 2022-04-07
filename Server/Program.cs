@@ -10,22 +10,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-bool FakeDatabase = false;
-if (FakeDatabase)
-{ 
-    builder.Services.AddTransient<IRepository<Car>, CarRepositoryFake>();
-    CarRepositoryFake.InitData();
-}
-else
+
+
+// For entity Framework
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    // For entity Framework
-    builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    {
-        var file = "cars";
-        options.UseSqlite($"Data Source={file}.db");
-    });
-    builder.Services.AddTransient<IRepository<Car>, CarRepository>();
-}
+    var file = "cars";
+    options.UseSqlite($"Data Source={file}.db");
+});
+builder.Services.AddTransient<IRepository<Car>, CarRepository>();
+
 
 
 // For DI registration

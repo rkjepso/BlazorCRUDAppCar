@@ -11,11 +11,11 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddTransient<IWebService, WebService>();
-builder.Services.AddBlazoredLocalStorage();
-builder.Services.AddTransient<IServiceLocal, LocalService>();
 
-//ProgramExt.SetISerciceCollection(builder.Services);
-//ProgramExt.IsLocalDb = true;
-//ProgramExt.ChangeIWebService();
+
+builder.Services.AddTransient<ICarsViewModel, CarsViewModel>();
+
+builder.Services.AddBlazoredLocalStorage();
+
 
 await builder.Build().RunAsync();

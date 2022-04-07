@@ -52,11 +52,6 @@ public class WebService : IWebService
         }
         list.Add(error);
         return list;
-        //var response = await Http.GetAsync("api/car");
-        //if (!response.IsSuccessStatusCode)
-        //    return new List<CarViewModel>();
-        //var carlist = await response.Content.ReadFromJsonAsync<List<CarViewModel>>();
-        //return carlist;
     }
 
     public async Task<bool> UpdateCar(CarViewModel car)
@@ -74,17 +69,6 @@ public class WebService : IWebService
             return false;
         bool deleteResponse = await response.Content.ReadFromJsonAsync<bool>();
         return deleteResponse;
-    }
-
-    // Update database with new cars
-    public async Task<List<CarViewModel>> Sync(List<CarViewModel> listLocal)
-    {
-        var listAdd = listLocal.Where(car=>car.Id >= IWebService.ID_LOCAL).ToList();
-        listAdd.ForEach(car => car.Id=0);
-        foreach(var car in listAdd)
-             await Add(car);
-
-        return await GetAllCars();
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿@page "/DeleteCar/{Id}"
 @inherits   BasePage
-
+@inject ICarsViewModel ICarsViewModel;
 
 <h3>Delete Car</h3>
 
@@ -18,9 +18,6 @@
     </div>
 </div>    
 }
-
-
-
 <div class="row">
      <button class="btn btn-primary" @onclick="@Delete">Delete</button>
     <button class="btn btn-primary" @onclick="@base.OnCarList">Car List</button>
@@ -36,12 +33,12 @@
     CarViewModel car = new CarViewModel();
     protected override async Task OnInitializedAsync()
     {
-        car = await API.GetPersonById(Id);
+        car = await ICarsViewModel.GetById(Id);
     }
     public string DeleteText { get; set; } = "Delete";
     protected async Task Delete()
     {
-        var b= await API.DeleteById(Id);
+        var b= await ICarsViewModel.DeleteById(Id);
         if (Msg !=null)
             await Msg.Show(b,  b ? "Delete OK" : "Delete Error - (already deleted ?)");
     }

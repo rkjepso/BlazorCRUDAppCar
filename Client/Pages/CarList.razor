@@ -1,5 +1,8 @@
 ﻿@page "/carlist"
 @inherits   BasePage
+
+@inject ICarsViewModel ICarsViewModel;
+
 <MyStyle></MyStyle>
 <style>
     h3 {display:inline;width:100px;color:red;}
@@ -10,12 +13,8 @@
     }
 </style>
 
-
 <div >
-    <h3>@(ProgramExt.IsLocalDb ? "Local Storage" : "Server Database")</h3>
     <button class="btn btn-primary" @onclick="OnDeleteAll">Delete All</button>
-@*    <button class="btn btn-primary" @onclick="OnChangeDb">Switch DB</button>*@
-
 </div>
 
 <br />
@@ -34,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var p in carlist ??= new List<CarViewModel>())
+            @foreach (var p in ICarsViewModel.Lst ??= new List<CarViewModel>())
             {
                 <tr>
                 <td>@p.Id</td>
@@ -42,7 +41,7 @@
                     <img class="imgSmall" src=@(GetImage(p))/> 
                 </td>
                 <td>@p.Brand</td>
-                <td> @p.Model</td>
+                <td>@p.Model</td>
                 <td>@p.Year</td>
                 <td style=@StyleNumber>@ToNumber(@p.Price)</td>
                 <td>
@@ -60,7 +59,6 @@
 <Message StrInfo=@StrLoad></Message>
 </div>
 
-
 @code {
     public string StrLoad { get; set; } = "";
     List<CarViewModel> carlist = new ();
@@ -75,9 +73,7 @@
 
     private bool MayEdit(CarViewModel car)
     {
-        if (!ProgramExt.IsLocalDb)
-            return true;
-        return car.Id >= IWebService.ID_LOCAL;
+        return true;
     }
 
     protected override async Task OnInitializedAsync()
@@ -88,31 +84,21 @@
     protected async Task OnLoad()
     {
         StrLoad = "Loading car .... ";
-        carlist = await base.API.GetAllCars();   
+        await ICarsViewModel.GetAll();  
         StrLoad = $"{carlist.Count} records loaded";
     }
 
-    async Task OnChangeDb()
-    {      
-        ProgramExt.IsLocalDb = !ProgramExt.IsLocalDb;
-        //await base.API.Sync(carlist);
-        //await OnLoad();
-    }
 
     async Task OnDeleteAll()
     {
         foreach (var car in carlist)
-            await API.DeleteById(car.Id.ToString());
+            await ICarsViewModel.DeleteById(car.Id.ToString());
 
-        carlist = await base.API.GetAllCars();   
+        await ICarsViewModel.GetAll();   
         StateHasChanged();
     }
 }
 
 
-@*<button @onclick="OnDummy">@StrDummy</button>
-@code {
-    public string StrDummy { get; set; } = "Press Me";
-    void OnDummy() { StrDummy = StrDummy + 'X'; }
-}*@
+
 

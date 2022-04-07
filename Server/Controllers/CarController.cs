@@ -42,7 +42,10 @@ namespace BlazorCRUDApp.Server.Controllers
         [HttpPut("{id}")]
         public async Task<bool> UpdateCar(int id, [FromBody] Car Object)
         {
-            await _carService.UpdateCar(id, Object); return true;
+            //await _carService.UpdateCar(id, Object); return true;
+            await _carService.DeleteCar(id);
+            await _carService.AddCar(Object);
+            return true;
         }
     }
 }

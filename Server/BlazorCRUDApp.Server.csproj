@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client\BlazorCRUDApp.Client.csproj" />
+    <ProjectReference Include="..\Shared\BlazorCRUDApp.Shared.csproj" />
   </ItemGroup>
 
 
