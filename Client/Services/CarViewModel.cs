@@ -27,7 +27,7 @@ public record CarViewModel : ICar
     public int Year { get; set; } = 1970;
     public int  Price { get; set; } = 0;
 
-    public static implicit operator CarViewModel(Car obj)
+    public static explicit operator CarViewModel(Car obj)
     {
         return new CarViewModel
         {
@@ -38,7 +38,7 @@ public record CarViewModel : ICar
             Price = obj.Price,    
         };
     }
-    public static implicit operator Car(CarViewModel obj)
+    public static explicit operator Car(CarViewModel obj)
     {
         return new Car
         {

@@ -13,10 +13,11 @@ static public class ModelFake
         return car;
     }
 
-    public static void Update(Car car)
+    public static bool Update(Car car)
     {
         int id =  Lst.FindIndex(x => x.Id == car.Id);
         Lst[id] = car;
+        return true;
     }
 
     
